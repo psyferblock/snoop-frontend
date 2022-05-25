@@ -1,0 +1,50 @@
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+  }
+.links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .links > li {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .snoop-img{
+      width:50px;
+      height:40px;
+      margin-bottom: -15px;
+      margin-right: 8px;
+  }
+  .welcome-msg{
+      text-align: center;
+  }
+
+  .teaser-div{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+
+  }
+
+  .teaser-div > div {
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 40px -15px #0008;
+    background-size: cover;
+    position: relative;
+ 
+}
+.teaser-div :nth-of-type(1){
+    background-image: url("https://cdn.pixabay.com/photo/2016/08/23/13/12/knitting-1614283_960_720.jpg");
+}
