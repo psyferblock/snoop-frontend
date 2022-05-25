@@ -108,4 +108,10 @@ body {
   background-position: center;
   overflow: hidden;
   box-shadow: 0px 0px 5px 5px rgba(146, 146, 146, 0.533);
+  text-align: center;
+}
+
+.card-img {
+  min-width: 100%;
+  min-height: 100%;
 }
