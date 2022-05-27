@@ -10,9 +10,6 @@
         @import url("./views/theme.css");
 
         /* TODO remove height limit */
-        body {
-            height: 100vh;
-        }
 
         .wrapper {
             position: relative;
@@ -23,43 +20,9 @@
             width: 100vw;
         }
 
-        .top-nav {
-            background-color: antiquewhite;
-        }
 
-        .inner-nav {
-            margin-right: 5vmin;
-            position: relative;
-            justify-content: space-between;
-            align-items: center;
-            display: flex;
-            height: 80px;
-        }
-
-        #logo {
-            position: absolute;
-            transform: translateY(-25%);
-            left: 30px;
-            top: 20px;
-            height: 15vmin;
-            filter: hue-rotate(90deg);
-        }
-
-        .links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .links>li {
-            margin-right: 20px;
-            cursor: pointer;
-        }
-
-        .teaser-wrapper {
+        .hero-wrapper {
+            z-index: -99;
             position: absolute;
             width: 100%;
             height: 100%;
@@ -69,31 +32,15 @@
             margin-bottom: 0%;
         }
 
-        .snoop-img {
-            width: 70px;
-            transform: translateY(10%);
-            margin-bottom: -15px;
-            filter: hue-rotate(90deg);
-            margin-right: 8px;
-        }
-
-        .welcome-msg {
-            font-size: 1.4em;
-            margin-top: 20vmin;
-            text-align: center;
-        }
-
-        .teaser-div {
+        .hero-div {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            border: 2px solid rgb(0, 38, 255);
             height: 100%;
             align-items: flex-end;
         }
 
-
-        .teaser-card {
+        .hero-card {
             overflow: hidden;
             border: 1px solid var(--dark);
             align-self: center;
@@ -103,7 +50,6 @@
             background-size: cover;
             background-position: center;
             overflow: hidden;
-            box-shadow: 0px 0px 5px 5px rgba(146, 146, 146, 0.533);
             text-align: center;
         }
 
@@ -124,34 +70,62 @@
         <nav class="top-nav">
             <div class="inner-nav">
                 <div class="brand">
-                    <img src="./views/assets/snoop.png" alt="" id="logo">
+                    <a href="./index.html">
+                        <img src="./views/assets/snoop.png" alt="" id="logo">
+                    </a>
                 </div>
-                <div>
-                    <ul class="links">
-                        <li><a>Sign up</a></li>
-                        <li><a>Sign in</a></li>
-                    </ul>
-                </div>
+                <ul id="links">
+                    <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
+                    <li><button class=""> <a id="signin" href="#">Sign up</a></button></li>
+                </ul>
             </div>
+            <h3 id="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png"
+                    class="snoop-img">around
+            </h3>
         </nav>
         <!-- End of nav bar -->
         <!-- Start teasers -->
-        <div class="teaser-wrapper">
-            <h3 class="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png"
-                    class="snoop-img">around
-            </h3>
-            <div class="teaser-div">
-                <div class="teaser-card"> <img src="./views/assets/sushi.webp" class="card-img" alt="sushi"></div>
-                <div class="teaser-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
-                <div class="teaser-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
+        <div class="hero-wrapper">
+            <div class="hero-div">
+                <div class="hero-card">
+                    <h1 slot="header">Canyons</h1>
+                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
+                </div>
+                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
+                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
+            </div>
+            <div class="hero-div">
+                <div class="hero-card">
+                    <h1 slot="header">Canyons</h1>
+                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
+                </div>
+                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
+                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
+            </div>
+            <div class="hero-div">
+                <div class="hero-card">
+                    <h1 slot="header">Canyons</h1>
+                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
+                </div>
+                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
+                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
             </div>
         </div>
         <!-- End teasers content -->
+    </div>
+    <div class="modal-wrapper">h
+        <div class="modal">
+            j
+        </div>
 
     </div>
+
     <!-- sign up form -->
     <!-- TODO fix values and make input required -->
-    <form id="sign-up-form">
+    <form id="sign-up-form" class="none">
         <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
         <input type="email" id="email" placeholder="Enter your email" required>
 
@@ -169,19 +143,25 @@
         <!-- password -->
         <label for="password">Password (8 characters minimum):</label>
         <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+        <button id="cancel-signup"> Cancel</button>
         <button id="signup-submit" type="submit"> Sign Up</button>
     </form>
     <br>
     <br>
     <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-    <form id="sign-in-form">
+    <form id="sign-in-form" class="none">
         <input type="email" id="signin_email" placeholder="Enter your email" required>
         <!-- password -->
         <label for="password">Password (8 characters minimum):</label>
         <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
+        <button id="cancel-signin"> Cancel</button>
         <button id="signin-submit" type="submit"> Sign In</button>
     </form>
     <script>
+        let signin = document.getElementById("signin");
+        let signup = document.getElementById("signup");
+        // TODO make these buttons let modal appear
+
         let signup_submit = document.getElementById("signup-submit");
         let signupSubmitHandler = (e) => {
             e.preventDefault();
@@ -204,7 +184,6 @@
         signup_submit.addEventListener('click', signupSubmitHandler);
 
         // sign in handler
-
         let signin_submit = document.getElementById("signin-submit");
         let signinSubmitHandler = (e) => {
             e.preventDefault();
