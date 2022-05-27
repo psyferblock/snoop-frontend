@@ -9,9 +9,9 @@
     <style>
         @import url("./views/theme.css");
 
-        /* TODO remove height limit */
+        /* TODO convert this into a proper grid system and move to theme */
 
-        .wrapper {
+        /* .wrapper {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -20,13 +20,11 @@
             width: 100vw;
         }
 
-
         .hero-wrapper {
             z-index: -99;
             position: absolute;
-            width: 100%;
+            width: 100vw;
             height: 100%;
-            border: 1px solid black;
             display: flex;
             flex-flow: column;
             margin-bottom: 0%;
@@ -56,7 +54,7 @@
         .card-img {
             min-width: 100%;
             min-height: 100%;
-        }
+        } */
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
@@ -75,6 +73,9 @@
                     </a>
                 </div>
                 <ul id="links">
+                    <div class="none" id="profile-img">
+                        <img src="./assets/images/img-01.jpg" alt="">
+                    </div>
                     <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
                     <li><button class=""> <a id="signin" href="#">Sign up</a></button></li>
                 </ul>
@@ -85,6 +86,40 @@
         </nav>
         <!-- End of nav bar -->
         <!-- Start teasers -->
+
+        <div class="myGallery">
+            <img src="https://picsum.photos/190/190?1" />
+            <img src="https://picsum.photos/190/190?2" />
+            <img src="https://picsum.photos/190/190?3" />
+            <img src="https://picsum.photos/190/190?4" />
+            <img src="https://picsum.photos/190/190?5" />
+            <img src="https://picsum.photos/190/190?6" />
+            <img src="https://picsum.photos/190/190?7" />
+            <img src="https://picsum.photos/190/190?8" />
+            <img src="https://picsum.photos/190/190?9" />
+            <img src="https://picsum.photos/190/190?10" />
+            <div class="item">
+                <img src="https://picsum.photos/190/190?11" />
+                <span class="caption">This is an image caption for image 11</span>
+            </div>
+            <div class="item">
+                <img src="https://picsum.photos/190/190?12" />
+                <span class="caption">This is an image caption for image 12</span>
+            </div>
+            <div class="item">
+                <img src="https://picsum.photos/190/190?13" />
+                <span class="caption">This is an image caption for image 13</span>
+            </div>
+            <div class="item">
+                <img src="https://picsum.photos/190/190?14" />
+                <span class="caption">This is an image caption for image 14</span>
+            </div>
+            <div class="item">
+                <img src="https://picsum.photos/190/190?15" />
+                <span class="caption">This is an image caption for image 15</span>
+            </div>
+        </div>
+
         <div class="hero-wrapper">
             <div class="hero-div">
                 <div class="hero-card">
@@ -116,48 +151,46 @@
         </div>
         <!-- End teasers content -->
     </div>
-    <div class="modal-wrapper">h
+    <div class="modal-wrapper none">
         <div class="modal">
-            j
+            <!-- sign up form -->
+            <!-- TODO fix values and make input required -->
+            <form id="sign-up-form" class="none">
+                <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <!-- gender -->
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+
+                <!-- dob -->
+                <label for="dob">Birthday:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
+
+                <!-- password -->
+                <label for="password">Password (8 characters minimum):</label>
+                <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+                <button id="signup-submit" class="action" type="submit"> Sign Up</button>
+                <button id="cancel-signup"> Cancel</button>
+            </form>
+            <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
+            <form id="sign-in-form" class="none">
+                <input type="email" id="signin_email" placeholder="Enter your email" required>
+                <!-- password -->
+                <label for="password">Password (8 characters minimum):</label>
+                <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
+                <button id="signin-submit" class="action" type="submit"> Sign In</button>
+                <button id="cancel-signin"> Cancel</button>
+            </form>
         </div>
-
     </div>
-
-    <!-- sign up form -->
-    <!-- TODO fix values and make input required -->
-    <form id="sign-up-form" class="none">
-        <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
-        <input type="email" id="email" placeholder="Enter your email" required>
-
-        <!-- gender -->
-        <label for="gender">Gender</label>
-        <select name="gender" id="gender" required>
-            <option value="0">Male</option>
-            <option value="1">Female</option>
-        </select>
-
-        <!-- dob -->
-        <label for="dob">Birthday:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
-
-        <!-- password -->
-        <label for="password">Password (8 characters minimum):</label>
-        <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
-        <button id="cancel-signup"> Cancel</button>
-        <button id="signup-submit" type="submit"> Sign Up</button>
-    </form>
-    <br>
-    <br>
-    <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-    <form id="sign-in-form" class="none">
-        <input type="email" id="signin_email" placeholder="Enter your email" required>
-        <!-- password -->
-        <label for="password">Password (8 characters minimum):</label>
-        <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
-        <button id="cancel-signin"> Cancel</button>
-        <button id="signin-submit" type="submit"> Sign In</button>
-    </form>
     <script>
+        let x = document.getElementsByTagName('button');
+        console.log(x);
+        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
         let signin = document.getElementById("signin");
         let signup = document.getElementById("signup");
         // TODO make these buttons let modal appear
