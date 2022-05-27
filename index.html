@@ -5,7 +5,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="shortcut icon" href="./views/assets/favicon.ico" type="image/x-icon">
+    <style>
+        @import url("./views/theme.css");
+
+        /* TODO remove height limit */
+        body {
+            height: 100vh;
+        }
+
+        .wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-height: 100vh;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .top-nav {
+            background-color: antiquewhite;
+        }
+
+        .inner-nav {
+            margin-right: 5vmin;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            height: 80px;
+        }
+
+        #logo {
+            position: absolute;
+            transform: translateY(-25%);
+            left: 30px;
+            top: 20px;
+            height: 15vmin;
+            filter: hue-rotate(90deg);
+        }
+
+        .links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .links>li {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .teaser-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+            display: flex;
+            flex-flow: column;
+            margin-bottom: 0%;
+        }
+
+        .snoop-img {
+            width: 70px;
+            transform: translateY(10%);
+            margin-bottom: -15px;
+            filter: hue-rotate(90deg);
+            margin-right: 8px;
+        }
+
+        .welcome-msg {
+            font-size: 1.4em;
+            margin-top: 20vmin;
+            text-align: center;
+        }
+
+        .teaser-div {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border: 2px solid rgb(0, 38, 255);
+            height: 100%;
+            align-items: flex-end;
+        }
+
+
+        .teaser-card {
+            overflow: hidden;
+            border: 1px solid var(--dark);
+            align-self: center;
+            width: 26vw;
+            height: 50vh;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            box-shadow: 0px 0px 5px 5px rgba(146, 146, 146, 0.533);
+            text-align: center;
+        }
+
+        .card-img {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
 </head>
 
@@ -17,7 +124,7 @@
         <nav class="top-nav">
             <div class="inner-nav">
                 <div class="brand">
-                    <img src="./assets/snoop.png" alt="" id="logo">
+                    <img src="./views/assets/snoop.png" alt="" id="logo">
                 </div>
                 <div>
                     <ul class="links">
@@ -30,16 +137,92 @@
         <!-- End of nav bar -->
         <!-- Start teasers -->
         <div class="teaser-wrapper">
-            <h3 class="welcome-msg">you need to be signed in to <img src="assets\snoop.png" class="snoop-img">around
+            <h3 class="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png"
+                    class="snoop-img">around
             </h3>
             <div class="teaser-div">
-                <div class="teaser-card"> <img src="./assets/sushi.webp" class="card-img" alt="sushi"></div>
-                <div class="teaser-card"> <img src="./assets/bar.webp" class="card-img" alt="drink"></div>
-                <div class="teaser-card"> <img src="./assets/chefs.webp" class="card-img" alt="drink"></div>
+                <div class="teaser-card"> <img src="./views/assets/sushi.webp" class="card-img" alt="sushi"></div>
+                <div class="teaser-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
+                <div class="teaser-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
             </div>
         </div>
         <!-- End teasers content -->
+
     </div>
+    <!-- sign up form -->
+    <!-- TODO fix values and make input required -->
+    <form id="sign-up-form">
+        <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <!-- gender -->
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
+
+        <!-- dob -->
+        <label for="dob">Birthday:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
+
+        <!-- password -->
+        <label for="password">Password (8 characters minimum):</label>
+        <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+        <button id="signup-submit" type="submit"> Sign Up</button>
+    </form>
+    <br>
+    <br>
+    <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
+    <form id="sign-in-form">
+        <input type="email" id="signin_email" placeholder="Enter your email" required>
+        <!-- password -->
+        <label for="password">Password (8 characters minimum):</label>
+        <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
+        <button id="signin-submit" type="submit"> Sign In</button>
+    </form>
+    <script>
+        let signup_submit = document.getElementById("signup-submit");
+        let signupSubmitHandler = (e) => {
+            e.preventDefault();
+            let data = new FormData();
+            data.append('full_name', document.getElementById('full_name').value);
+            data.append('email', document.getElementById('email').value);
+            data.append('gender', document.getElementById('gender').value);
+            data.append('date_of_birth', document.getElementById('date_of_birth').value);
+            data.append('password', document.getElementById('password').value);
+            axios({
+                method: 'post',
+                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+                data: data,
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        signup_submit.addEventListener('click', signupSubmitHandler);
+
+        // sign in handler
+
+        let signin_submit = document.getElementById("signin-submit");
+        let signinSubmitHandler = (e) => {
+            e.preventDefault();
+            let data = new FormData();
+            data.append('email', document.getElementById('signin_email').value);
+            data.append('password', document.getElementById('signin_password').value);
+            axios({
+                method: 'post',
+                url: 'http://localhost/snoop/snoop-backend/postsignin.php',
+                data: data,
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        signin_submit.addEventListener('click', signupSubmitHandler);
+    </script>
 </body>
 
 </html>
