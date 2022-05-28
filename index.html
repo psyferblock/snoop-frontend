@@ -102,139 +102,93 @@
                 <img src="https://picsum.photos/190/190?11" />
                 <span class="caption">This is an image caption for image 11</span>
             </div>
-            <div class="item">
-                <img src="https://picsum.photos/190/190?12" />
-                <span class="caption">This is an image caption for image 12</span>
-            </div>
-            <div class="item">
-                <img src="https://picsum.photos/190/190?13" />
-                <span class="caption">This is an image caption for image 13</span>
-            </div>
-            <div class="item">
-                <img src="https://picsum.photos/190/190?14" />
-                <span class="caption">This is an image caption for image 14</span>
-            </div>
-            <div class="item">
-                <img src="https://picsum.photos/190/190?15" />
-                <span class="caption">This is an image caption for image 15</span>
+            <!-- End teasers content -->
+        </div>
+        <div class="modal-wrapper none">
+            <div class="modal">
+                <!-- sign up form -->
+                <!-- TODO fix values and make input required -->
+                <form id="sign-up-form" class="none">
+                    <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+
+                    <!-- gender -->
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" required>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+
+                    <!-- dob -->
+                    <label for="dob">Birthday:</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
+
+                    <!-- password -->
+                    <label for="password">Password (8 characters minimum):</label>
+                    <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+                    <button id="signup-submit" class="action" type="submit"> Sign Up</button>
+                    <button id="cancel-signup"> Cancel</button>
+                </form>
+                <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
+                <form id="sign-in-form" class="none">
+                    <input type="email" id="signin_email" placeholder="Enter your email" required>
+                    <!-- password -->
+                    <label for="password">Password (8 characters minimum):</label>
+                    <input type="password" id="signin_password" name="password" minlength="8" value="helloworld"
+                        required>
+                    <button id="signin-submit" class="action" type="submit"> Sign In</button>
+                    <button id="cancel-signin"> Cancel</button>
+                </form>
             </div>
         </div>
+        <script>
+            let x = document.getElementsByTagName('button');
+            console.log(x);
+            [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
+            let signin = document.getElementById("signin");
+            let signup = document.getElementById("signup");
+            // TODO make these buttons let modal appear
 
-        <div class="hero-wrapper">
-            <div class="hero-div">
-                <div class="hero-card">
-                    <h1 slot="header">Canyons</h1>
-                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
-                </div>
-                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
-                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
-            </div>
-            <div class="hero-div">
-                <div class="hero-card">
-                    <h1 slot="header">Canyons</h1>
-                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
-                </div>
-                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
-                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
-            </div>
-            <div class="hero-div">
-                <div class="hero-card">
-                    <h1 slot="header">Canyons</h1>
-                    <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <img src="./views/assets/sushi.webp" class="card-img" alt="sushi">
-                </div>
-                <div class="hero-card"> <img src="./views/assets/bar.webp" class="card-img" alt="drink"></div>
-                <div class="hero-card"> <img src="./views/assets/chefs.webp" class="card-img" alt="drink"></div>
-            </div>
-        </div>
-        <!-- End teasers content -->
-    </div>
-    <div class="modal-wrapper none">
-        <div class="modal">
-            <!-- sign up form -->
-            <!-- TODO fix values and make input required -->
-            <form id="sign-up-form" class="none">
-                <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
-                <input type="email" id="email" placeholder="Enter your email" required>
+            let signup_submit = document.getElementById("signup-submit");
+            let signupSubmitHandler = (e) => {
+                e.preventDefault();
+                let data = new FormData();
+                data.append('full_name', document.getElementById('full_name').value);
+                data.append('email', document.getElementById('email').value);
+                data.append('gender', document.getElementById('gender').value);
+                data.append('date_of_birth', document.getElementById('date_of_birth').value);
+                data.append('password', document.getElementById('password').value);
+                axios({
+                    method: 'post',
+                    url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+                    data: data,
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            signup_submit.addEventListener('click', signupSubmitHandler);
 
-                <!-- gender -->
-                <label for="gender">Gender</label>
-                <select name="gender" id="gender" required>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-
-                <!-- dob -->
-                <label for="dob">Birthday:</label>
-                <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
-
-                <!-- password -->
-                <label for="password">Password (8 characters minimum):</label>
-                <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
-                <button id="signup-submit" class="action" type="submit"> Sign Up</button>
-                <button id="cancel-signup"> Cancel</button>
-            </form>
-            <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-            <form id="sign-in-form" class="none">
-                <input type="email" id="signin_email" placeholder="Enter your email" required>
-                <!-- password -->
-                <label for="password">Password (8 characters minimum):</label>
-                <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
-                <button id="signin-submit" class="action" type="submit"> Sign In</button>
-                <button id="cancel-signin"> Cancel</button>
-            </form>
-        </div>
-    </div>
-    <script>
-        let x = document.getElementsByTagName('button');
-        console.log(x);
-        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
-        let signin = document.getElementById("signin");
-        let signup = document.getElementById("signup");
-        // TODO make these buttons let modal appear
-
-        let signup_submit = document.getElementById("signup-submit");
-        let signupSubmitHandler = (e) => {
-            e.preventDefault();
-            let data = new FormData();
-            data.append('full_name', document.getElementById('full_name').value);
-            data.append('email', document.getElementById('email').value);
-            data.append('gender', document.getElementById('gender').value);
-            data.append('date_of_birth', document.getElementById('date_of_birth').value);
-            data.append('password', document.getElementById('password').value);
-            axios({
-                method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
-                data: data,
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-        signup_submit.addEventListener('click', signupSubmitHandler);
-
-        // sign in handler
-        let signin_submit = document.getElementById("signin-submit");
-        let signinSubmitHandler = (e) => {
-            e.preventDefault();
-            let data = new FormData();
-            data.append('email', document.getElementById('signin_email').value);
-            data.append('password', document.getElementById('signin_password').value);
-            axios({
-                method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignin.php',
-                data: data,
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-        signin_submit.addEventListener('click', signupSubmitHandler);
-    </script>
+            // sign in handler
+            let signin_submit = document.getElementById("signin-submit");
+            let signinSubmitHandler = (e) => {
+                e.preventDefault();
+                let data = new FormData();
+                data.append('email', document.getElementById('signin_email').value);
+                data.append('password', document.getElementById('signin_password').value);
+                axios({
+                    method: 'post',
+                    url: 'http://localhost/snoop/snoop-backend/postsignin.php',
+                    data: data,
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            signin_submit.addEventListener('click', signupSubmitHandler);
+        </script>
 </body>
 
 </html>
