@@ -26,9 +26,6 @@
                     </a>
                 </div>
                 <ul id="links">
-                    <div class="none" id="profile-img">
-                        <img src="./views/assets/teasers/img-01.jpg" alt="">
-                    </div>
                     <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
                     <li><button class=""> <a id="signup" href="#">Sign up</a></button></li>
                 </ul>
@@ -112,7 +109,7 @@
             <div class="modal">
                 <!-- sign up form -->
                 <!-- TODO fix values and make input required -->
-                <form id="sign-up-form" class="none">
+                <form id="sign-up-form" class="none" name="sign-up-form" novalidate>
                     <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
                     <input type="email" id="email" placeholder="Enter your email" required>
 
@@ -130,17 +127,17 @@
                     <!-- password -->
                     <label for="password">Password (8 characters minimum):</label>
                     <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
-                    <button id="signup-submit" class="action" type="submit"> Sign Up</button>
+                    <button id="signup-submit" class="action" type="button"> Sign Up</button>
                     <button id="cancel-signup"> Cancel</button>
                 </form>
                 <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-                <form id="sign-in-form" class="none">
+                <form id="sign-in-form" class="none" name="sign-in-form" novalidate>
                     <input type="email" id="signin_email" placeholder="Enter your email" required>
                     <!-- password -->
                     <label for="password">Password (8 characters minimum):</label>
                     <input type="password" id="signin_password" name="password" minlength="8" value="helloworld"
                         required>
-                    <button id="signin-submit" class="action" type="submit"> Sign In</button>
+                    <button id="signin-submit" class="action" type="button"> Sign In</button>
                     <button id="cancel-signin"> Cancel</button>
                 </form>
             </div>
@@ -212,10 +209,13 @@
                     // TODO check if sign in success, //display success message, and redirect to home
                     console.log(response);
                 }).catch(function (error) {
+                    // TODO move this redirection t only happen if promise resolves
+                    setTimeout(document.location = "./views/home.html", 100);
                     console.log(error);
                 });
+
             }
-            signin_submit.addEventListener('click', signupSubmitHandler);
+            signin_submit.addEventListener('click', signinSubmitHandler);
         </script>
 </body>
 
