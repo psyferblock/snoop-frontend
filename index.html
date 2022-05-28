@@ -16,207 +16,204 @@
 <!-- landing page -->
 
 <body>
-    <div class="wrapper">
-        <!-- Nav Bar -->
-        <nav class="top-nav">
-            <div class="inner-nav">
-                <div class="brand">
-                    <a href="./index.html">
-                        <img src="./views/assets/snoop.png" alt="" id="logo">
-                    </a>
-                </div>
-                <ul id="links">
-                    <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
-                    <li><button class=""> <a id="signup" href="#">Sign up</a></button></li>
-                </ul>
+    <!-- Nav Bar -->
+    <nav class="top-nav">
+        <div class="inner-nav">
+            <div class="brand">
+                <a href="./index.html">
+                    <img src="./views/assets/snoop.png" alt="" id="logo">
+                </a>
             </div>
-            <h3 id="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png"
-                    class="snoop-img">around
-            </h3>
-        </nav>
-        <!-- End of nav bar -->
-        <!-- Start teasers -->
-
-        <div class="myGallery">
-            <div class="item">
-                <img src="./views/assets/teasers/img-01.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-02.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-03.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-04.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-05.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-06.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-07.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-08.jpeg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-09.jpeg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-10.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-11.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-12.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-13.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-14.jpg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-15.jpeg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
-            <div class="item">
-                <img src="./views/assets/teasers/img-16.jpeg" />
-                <span class="caption">This is an image caption for image 11</span>
-            </div>
+            <ul id="links">
+                <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
+                <li><button class=""> <a id="signup" href="#">Sign up</a></button></li>
+            </ul>
         </div>
-        <!-- End teasers -->
+        <h3 id="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png" class="snoop-img">around
+        </h3>
+    </nav>
+    <!-- End of nav bar -->
 
-        <div class="modal-wrapper none">
-            <div class="modal">
-                <!-- sign up form -->
-                <!-- TODO fix values and make input required -->
-                <form id="sign-up-form" class="none" name="sign-up-form" novalidate>
-                    <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-
-                    <!-- gender -->
-                    <label for="gender">Gender</label>
-                    <select name="gender" id="gender" required>
-                        <option value="0">Male</option>
-                        <option value="1">Female</option>
-                    </select>
-
-                    <!-- dob -->
-                    <label for="dob">Birthday:</label>
-                    <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
-
-                    <!-- password -->
-                    <label for="password">Password (8 characters minimum):</label>
-                    <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
-                    <button id="signup-submit" class="action" type="button"> Sign Up</button>
-                    <button id="cancel-signup"> Cancel</button>
-                </form>
-                <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-                <form id="sign-in-form" class="none" name="sign-in-form" novalidate>
-                    <input type="email" id="signin_email" placeholder="Enter your email" required>
-                    <!-- password -->
-                    <label for="password">Password (8 characters minimum):</label>
-                    <input type="password" id="signin_password" name="password" minlength="8" value="helloworld"
-                        required>
-                    <button id="signin-submit" class="action" type="button"> Sign In</button>
-                    <button id="cancel-signin"> Cancel</button>
-                </form>
-            </div>
+    <!-- Start teasers -->
+    <div class="myGallery">
+        <div class="item">
+            <img src="./views/assets/teasers/img-01.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
         </div>
-        <script>
-            let x = document.getElementsByTagName('button');
-            console.log(x);
-            [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
+        <div class="item">
+            <img src="./views/assets/teasers/img-02.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-03.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-04.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-05.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-06.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-07.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-08.jpeg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-09.jpeg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-10.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-11.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-12.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-13.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-14.jpg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-15.jpeg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-16.jpeg" />
+            <span class="caption">This is an image caption for image 11</span>
+        </div>
+    </div>
+    <!-- End teasers -->
 
-            let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
-            let cancel_signin = document.getElementById('cancel-signin');
-            let cancel_signup = document.getElementById('cancel-signup');
-            let cancelInput = () => {
-                sign_in_form.classList.add('none')
-                sign_up_form.classList.add('none')
-                modal_wrapper.classList.add('none');
-            }
-            cancel_signin.addEventListener('click', cancelInput)
-            cancel_signup.addEventListener('click', cancelInput)
-            let sign_in_form = document.getElementById('sign-in-form');
-            let sign_up_form = document.getElementById('sign-up-form');
-            // TODO make these buttons let modal appear
-            let signin = document.getElementById("signin");
-            let signup = document.getElementById("signup");
-            signin.addEventListener('click', () => {
-                sign_in_form.classList.remove('none')
-                modal_wrapper.classList.remove('none');
-            })
-            signup.addEventListener('click', () => {
-                sign_up_form.classList.remove('none')
-                modal_wrapper.classList.remove('none');
-            })
+    <div class="modal-wrapper none">
+        <div class="modal">
+            <!-- sign up form -->
+            <!-- TODO fix values and make input required -->
+            <form id="sign-up-form" class="none" name="sign-up-form" novalidate>
+                <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <!-- gender -->
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+
+                <!-- dob -->
+                <label for="dob">Birthday:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
+
+                <!-- password -->
+                <label for="password">Password (8 characters minimum):</label>
+                <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+                <button id="signup-submit" class="action" type="button"> Sign Up</button>
+                <button id="cancel-signup"> Cancel</button>
+            </form>
+            <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
+            <form id="sign-in-form" class="none" name="sign-in-form" novalidate>
+                <input type="email" id="signin_email" placeholder="Enter your email" required>
+                <!-- password -->
+                <label for="password">Password (8 characters minimum):</label>
+                <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
+                <button id="signin-submit" class="action" type="button"> Sign In</button>
+                <button id="cancel-signin"> Cancel</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let x = document.getElementsByTagName('button');
+        console.log(x);
+        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
+
+        let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
+        let cancel_signin = document.getElementById('cancel-signin');
+        let cancel_signup = document.getElementById('cancel-signup');
+        let cancelInput = () => {
+            sign_in_form.classList.add('none')
+            sign_up_form.classList.add('none')
+            modal_wrapper.classList.add('none');
+        }
+        cancel_signin.addEventListener('click', cancelInput)
+        cancel_signup.addEventListener('click', cancelInput)
+        let sign_in_form = document.getElementById('sign-in-form');
+        let sign_up_form = document.getElementById('sign-up-form');
+        // TODO make these buttons let modal appear
+        let signin = document.getElementById("signin");
+        let signup = document.getElementById("signup");
+        signin.addEventListener('click', () => {
+            sign_in_form.classList.remove('none')
+            modal_wrapper.classList.remove('none');
+        })
+        signup.addEventListener('click', () => {
+            sign_up_form.classList.remove('none')
+            modal_wrapper.classList.remove('none');
+        })
 
 
-            let signup_submit = document.getElementById("signup-submit");
-            let signupSubmitHandler = (e) => {
-                e.preventDefault();
-                let data = new FormData();
-                data.append('full_name', document.getElementById('full_name').value);
-                data.append('email', document.getElementById('email').value);
-                data.append('gender', document.getElementById('gender').value);
-                data.append('date_of_birth', document.getElementById('date_of_birth').value);
-                data.append('password', document.getElementById('password').value);
-                axios({
-                    method: 'post',
-                    url: 'http://localhost/snoop/snoop-backend/postsignup.php',
-                    data: data,
-                }).then(function (response) {
-                    // TODO check if sign up success, //display success message, and redirect to sign in form
-                    console.log(response);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-            signup_submit.addEventListener('click', signupSubmitHandler);
+        let signup_submit = document.getElementById("signup-submit");
+        let signupSubmitHandler = (e) => {
+            e.preventDefault();
+            let data = new FormData();
+            data.append('full_name', document.getElementById('full_name').value);
+            data.append('email', document.getElementById('email').value);
+            data.append('gender', document.getElementById('gender').value);
+            data.append('date_of_birth', document.getElementById('date_of_birth').value);
+            data.append('password', document.getElementById('password').value);
+            axios({
+                method: 'post',
+                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+                data: data,
+            }).then(function (response) {
+                // TODO check if sign up success, //display success message, and redirect to sign in form
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        signup_submit.addEventListener('click', signupSubmitHandler);
 
-            // sign in handler
-            let signin_submit = document.getElementById("signin-submit");
-            let signinSubmitHandler = (e) => {
-                e.preventDefault();
-                let data = new FormData();
-                data.append('email', document.getElementById('signin_email').value);
-                data.append('password', document.getElementById('signin_password').value);
-                axios({
-                    method: 'post',
-                    url: 'http://localhost/snoop/snoop-backend/postsignin.php',
-                    data: data,
-                }).then(function (response) {
-                    // TODO check if sign in success, //display success message, and redirect to home
-                    console.log(response);
-                }).catch(function (error) {
-                    // TODO move this redirection t only happen if promise resolves
-                    setTimeout(document.location = "./views/home.html", 100);
-                    console.log(error);
-                });
+        // sign in handler
+        let signin_submit = document.getElementById("signin-submit");
+        let signinSubmitHandler = (e) => {
+            e.preventDefault();
+            let data = new FormData();
+            data.append('email', document.getElementById('signin_email').value);
+            data.append('password', document.getElementById('signin_password').value);
+            axios({
+                method: 'post',
+                url: 'http://localhost/snoop/snoop-backend/postsignin.php',
+                data: data,
+            }).then(function (response) {
+                // TODO check if sign in success, //display success message, and redirect to home
+                console.log(response);
+            }).catch(function (error) {
+                // TODO move this redirection t only happen if promise resolves
+                setTimeout(document.location = "./views/home.html", 100);
+                console.log(error);
+            });
 
-            }
-            signin_submit.addEventListener('click', signinSubmitHandler);
-        </script>
+        }
+        signin_submit.addEventListener('click', signinSubmitHandler);
+    </script>
 </body>
 
 </html>
