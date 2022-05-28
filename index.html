@@ -8,6 +8,34 @@
     <link rel="shortcut icon" href="./views/assets/favicon.ico" type="image/x-icon">
     <style>
         @import url("./views/theme.css");
+
+        .top-nav {
+            background: linear-gradient(to bottom,
+                    rgba(255, 0, 0, 0.5) 0%,
+                    rgba(255, 0, 0, 0.5) 100%);
+        }
+
+        #welcome-msg {
+            color: var(--bright);
+            line-height: 10px;
+            text-align: center;
+            text-align: center;
+            font-size: 1.8em;
+            max-width: 800px;
+            margin-bottom: 20px;
+            transform: translateY(-80px);
+            margin: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #welcome-msg {
+                margin: auto;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                transform: translateY(0px);
+
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
@@ -19,11 +47,11 @@
     <!-- Nav Bar -->
     <nav class="top-nav">
         <div class="inner-nav">
-            <div class="brand">
-                <a href="./index.html">
+            <a href="./index.html">
+                <div class="brand">
                     <img src="./views/assets/snoop.png" alt="" id="logo">
-                </a>
-            </div>
+                </div>
+            </a>
             <ul id="links">
                 <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
                 <li><button class=""> <a id="signup" href="#">Sign up</a></button></li>
@@ -38,67 +66,51 @@
     <div class="myGallery">
         <div class="item">
             <img src="./views/assets/teasers/img-01.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-02.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-03.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-04.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-05.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-06.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-07.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-08.jpeg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-09.jpeg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-10.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-11.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-12.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-13.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-14.jpg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-15.jpeg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
         <div class="item">
             <img src="./views/assets/teasers/img-16.jpeg" />
-            <span class="caption">This is an image caption for image 11</span>
         </div>
     </div>
     <!-- End teasers -->
