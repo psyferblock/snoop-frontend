@@ -9,16 +9,13 @@
     <style>
         @import url("./theme.css");
 
-        form {
-            border: 1px solid red
-        }
+        /* hero styling */
 
         .hero-wrapper {
             position: relative;
-            top: -120px;
-            width: 100vw;
+            margin-top: -120px;
+            max-width: 100vw;
             height: 75vh;
-
         }
 
         .gradient {
@@ -81,6 +78,79 @@
                 font-weight: 400;
             }
         }
+
+        /* user-reviews section */
+        label {
+            font-size: 20px;
+        }
+
+        #user-reviews {
+            padding: 40px;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            #user-reviews {
+                padding: 20px;
+            }
+        }
+
+        form * {
+            border: 1px solid red;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            /* width: 100vw; */
+            justify-items: center;
+            justify-content: space-between;
+        }
+
+        #submit-review {
+            align-self: flex-end;
+            font-size: 20px;
+            padding: 15px 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 99;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        #part-one {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: start;
+            align-content: flex-end;
+        }
+
+        #part-two {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: start;
+            align-content: flex-end;
+        }
+
+        #review-text-input {
+            max-width: 80vw;
+            margin-right: 40px;
+            height: 200px;
+
+        }
+
+        .review {
+            border: 1px solid var(--dark);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 40px;
+            height: 130px;
+            overflow-y: scroll;
+        }
     </style>
     <title>SNOOP</title>
 </head>
@@ -106,7 +176,7 @@
         <div class="gradient">
         </div>
         <div class="text">
-            <h1 class="name">Malak AL Tawook</h1>
+            <h1 class="name">Malak al Tawook</h1>
             <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius similique reiciendis
                 aut
                 ducimus obcaecati minima hic atque. Quas exercitationem autem iure quod molestias qui necessitatibus.
@@ -114,10 +184,29 @@
         </div>
         <img src="./assets/restopics/img (1).jpg" alt="" class="cover">
     </div>
-    <section class="reviews">
+    <section id="user-reviews">
         <form id="insert-review">
-            <textarea name="review-text" id="review-text" cols="30" rows="10"></textarea>
+            <div id="part-one">
+                <label for="review-text-input">Leave us a review</label>
+                <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
+            </div>
+            <div id="part-two">
+                <label for="review-text-input">Leave a rating</label>
+                <div class="rating"></div>
+                <button id="submit-review" class="action" type="button"> Submit </button>
+            </div>
         </form>
+        <div class="review">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium esse consectetur doloremque voluptates
+            enim quod unde ullam laboriosam, illum officiis sit quam at ipsa fugit, dolor cum ad quae exercitationem
+            reprehenderit, harum officia sapiente molestiae. Est eius rerum debitis sed impedit in provident officia,
+            illo nihil, numquam reprehenderit error ea? Exercitationem laudantium animi accusantium. Quo libero
+            laudantium, consequatur, repellendus, eaque est dicta unde harum excepturi sapiente possimus eligendi. Esse,
+            sit tenetur veniam voluptate dolor cum repudiandae officia error laborum qui eos deleniti ea odit aliquam
+            autem quasi, assumenda soluta ut minus commodi iusto? Illo quam, repudiandae accusamus totam debitis
+            corporis dolore tenetur! Nobis error sapiente quas a optio dolore, fugiat voluptatibus qui quos ab,
+            exercitationem quis reprehenderit rerum, illum excepturi!
+        </div>
     </section>
     <script>
         // TODO on load, send a request
