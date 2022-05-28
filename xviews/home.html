@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url("./theme.css");
+
+
+        .myGallery .item:hover {
+            border: 2px solid var(--dark);
+            outline: 1px solid var(--dark);
+            outline-offset: -8px;
+        }
+
+        .gradient {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .rating {
+            margin-top: 20px;
+        }
+
+        .gradient:hover {
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.0) 40%,
+                    rgba(0, 0, 0, 0.5) 70%,
+                    rgba(0, 0, 0, 0.9) 100%);
+        }
+
+        .myGallery *:hover+.caption {
+            display: block;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #links {
+                margin-top: 10px;
+            }
+
+            .myGallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+    <title>SNOOP</title>
+</head>
+
+<!-- home page - where signed in user is taken and he can see a bunch of restaurents -->
+
+<body>
+    <!-- Nav Bar -->
+    <nav class="top-nav">
+        <div class="inner-nav">
+            <div class="brand">
+                <a href="./home.html">
+                    <img src="./assets/snoop.png" alt="" id="logo">
+                </a>
+            </div>
+            <ul id="links">
+                <div id="profile-img-mask">
+                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <!-- Start restaurants list -->
+    <div class="myGallery">
+        <div class="item">
+            <a href="./restaurant.html?restaurantid=56">
+                <div class="gradient">
+                    <span class="caption">
+                        Restaurant Name
+                        <div class="rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </span>
+                </div>
+                <img src="./assets/teasers/img-01.jpg" />
+            </a>
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-02.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-03.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-04.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-05.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-06.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-07.jpg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-08.jpeg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-09.jpeg" />
+        </div>
+        <div class="item">
+            <div class="gradient">
+                <span class="caption">
+                    Restaurant Name
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </span>
+            </div>
+            <img src="./assets/teasers/img-10.jpg" />
+        </div>
+
+    </div>
+    <!-- End restaurants list -->
+    <script>
+
+        window.onload = () => {
+            // TODO populate grid with restaurant cards
+
+        }
+        let x = document.getElementsByTagName('button');
+        console.log(x);
+        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
+
+        // let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
+        // let cancel_signin = document.getElementById('cancel-signin');
+        // let cancel_signup = document.getElementById('cancel-signup');
+        // let cancelInput = () => {
+        //     sign_in_form.classList.add('none')
+        //     sign_up_form.classList.add('none')
+        //     modal_wrapper.classList.add('none');
+        // }
+        // cancel_signin.addEventListener('click', cancelInput)
+        // cancel_signup.addEventListener('click', cancelInput)
+        // let sign_in_form = document.getElementById('sign-in-form');
+        // let sign_up_form = document.getElementById('sign-up-form');
+        // // TODO make these buttons let modal appear
+        // let signin = document.getElementById("signin");
+        // let signup = document.getElementById("signup");
+        // signin.addEventListener('click', () => {
+        //     sign_in_form.classList.remove('none')
+        //     modal_wrapper.classList.remove('none');
+        // })
+        // signup.addEventListener('click', () => {
+        //     sign_up_form.classList.remove('none')
+        //     modal_wrapper.classList.remove('none');
+        // })  
+    </script>
+</body>
+
+</html>
