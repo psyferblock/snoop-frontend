@@ -135,6 +135,7 @@
             </div>
         </nav>
         <!-- End of nav bar -->
+
         <!-- Start teasers -->
         <div class="teaser-wrapper">
             <h3 class="welcome-msg">you need to be signed in to <img src="./views/assets\snoop.png"
@@ -150,10 +151,11 @@
 
     </div>
     <!-- sign up form -->
+
     <!-- TODO fix values and make input required -->
-    <form id="sign-up-form">
-        <input type="text" id="full_name" value="full_name" placeholder="Enter your full name" required>
-        <input type="email" id="email" placeholder="Enter your email" required>
+    <form id="sign-up-form" action ="signup.php" method="get">
+        <input type="text" name="fullname" id="full_name" value="full_name" placeholder="Enter your full name" required>
+        <input type="text" name="email" id="email" placeholder="Enter your email" value ="h@g.com" required>
 
         <!-- gender -->
         <label for="gender">Gender</label>
@@ -164,65 +166,17 @@
 
         <!-- dob -->
         <label for="dob">Birthday:</label>
-        <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" required>
+        <input type="date" id="date_of_birth" name="dob" value="2022-05-25" required>
 
         <!-- password -->
         <label for="password">Password (8 characters minimum):</label>
         <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
-        <button id="signup-submit" type="submit"> Sign Up</button>
+        <!-- <button id="signup-submit" type="submit"> Sign Up</button> -->
+        <input type="submit" value="signup">
     </form>
     <br>
-    <br>
-    <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
-    <form id="sign-in-form">
-        <input type="email" id="signin_email" placeholder="Enter your email" required>
-        <!-- password -->
-        <label for="password">Password (8 characters minimum):</label>
-        <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
-        <button id="signin-submit" type="submit"> Sign In</button>
-    </form>
-    <script>
-        let signup_submit = document.getElementById("signup-submit");
-        let signupSubmitHandler = (e) => {
-            e.preventDefault();
-            let data = new FormData();
-            data.append('full_name', document.getElementById('full_name').value);
-            data.append('email', document.getElementById('email').value);
-            data.append('gender', document.getElementById('gender').value);
-            data.append('date_of_birth', document.getElementById('date_of_birth').value);
-            data.append('password', document.getElementById('password').value);
-            axios({
-                method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
-                data: data,
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-        signup_submit.addEventListener('click', signupSubmitHandler);
-
-        // sign in handler
-
-        let signin_submit = document.getElementById("signin-submit");
-        let signinSubmitHandler = (e) => {
-            e.preventDefault();
-            let data = new FormData();
-            data.append('email', document.getElementById('signin_email').value);
-            data.append('password', document.getElementById('signin_password').value);
-            axios({
-                method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignin.php',
-                data: data,
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-        signin_submit.addEventListener('click', signupSubmitHandler);
-    </script>
+  
+   
 </body>
 
 </html>
