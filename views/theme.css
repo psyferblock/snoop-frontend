@@ -11,6 +11,7 @@ input[type=file]::file-selector-button {
 
 input[type=file]::file-selector-button:hover {
     color: red;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -88,6 +89,7 @@ button {
 button:hover {
     color: var(--accent-1);
     border: 1px solid var(--accent-1);
+    cursor: pointer;
 }
 
 .action {
@@ -97,6 +99,7 @@ button:hover {
 
 .action:hover {
     background-color: #c0fc84 !important;
+    cursor: pointer;
 }
 
 /* common classes */
@@ -386,10 +389,12 @@ form button {
 .myGallery .item:hover {
     border: 5px solid var(--bright);
     transform: translateY(0%);
+    cursor: pointer;
 }
 
 .myGallery .item:hover .caption {
     transform: translateY(0%);
+    cursor: pointer;
 }
 
 /* reviews */

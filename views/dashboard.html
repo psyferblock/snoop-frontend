@@ -45,8 +45,8 @@
 
 
         aside {
-            width: 300px;
-            max-width: 30vw;
+            width: 320px;
+            max-width: 40vw;
         }
 
 
@@ -71,12 +71,12 @@
         }
 
         aside ul>*:hover {
-
             background-color: var(--bright);
         }
 
         aside ul>* {
             padding: 20px;
+            margin-top: 5px;
             padding-left: 40px;
             text-align: start;
             vertical-align: middle;
@@ -84,10 +84,10 @@
         }
 
         aside ul * {
+            vertical-align: middle;
             white-space: nowrap;
             color: var(--mid);
             font-size: 18px;
-
         }
 
         svg {
@@ -96,7 +96,6 @@
         }
 
         @media only screen and (max-width: 600px) {
-
             aside {
                 width: 100vw;
                 max-width: none;
@@ -113,7 +112,7 @@
                 text-align: center;
                 vertical-align: middle;
                 height: 60px;
-                width: 150px;
+                margin-top: 0px;
             }
 
             .hero-wrapper {
@@ -220,6 +219,7 @@
 
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
 </head>
 
@@ -244,7 +244,7 @@
     <div class="hero-wrapper">
         <aside>
             <ul>
-                <li class="active">
+                <li class="" id="users-tab">
                     <a class="tab inline-flex text-sm " href="#">
                         <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
@@ -254,7 +254,7 @@
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="" id="reviews-tab">
                     <a class="tab inline-flex text-sm " href="#">
                         <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
@@ -262,7 +262,7 @@
                         <span>Reviews</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="" id="add-resto-tab">
                     <a class="tab inline-flex text-sm " href="#">
                         <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
@@ -275,80 +275,55 @@
             </ul>
         </aside>
         <main id="main">
+        </main>
+    </div>
+    <script>
+        // file to Base64 function
+        function getBase64(file) {
+            let reader = new FileReader();
+            reader.addEventListener('loadend', function () {
+                console.log(this.result)
+            });
+            reader.readAsText(file);
 
-            <!-- users list -->
-            <div class="none users-wrapper" id="users-wrapper">
-                <div class="myGallery">
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
-                    <div class="item">
-                        <span class="user-name">
-                            User Name
-                        </span>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </div>
+            // reader.readAsDataURL(file);
+            // reader.onloadend = function () {
+            //     console.log('base64 read');
+            //     console.log(reader.result);
+            // };
+            // reader.onerror = function (error) {
+            //     console.log('Error: ', error);
+            // };
+        }
 
-                    <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-10.jpg" />
-                    </div>
+        let main = document.getElementById('main');
+        let reviews_tab = document.getElementById('reviews-tab');
+        let users_tab = document.getElementById('users-tab');
+        let add_resto_tab = document.getElementById('add-resto-tab');
+        reviewsHandler = (e) => {
+            users_tab.classList.remove('active');
+            add_resto_tab.classList.remove('active');
+            reviews_tab.classList.add('active');
+            main.innerHTML = ""
+            // create the inner HTML
+            let reviews = document.createElement("div");
+            reviews.classList.add('reviews')
+            // TODO get data from api
 
-                </div>
-            </div>
+            // axios({
+            //     method: 'get',
+            //     url: 'https://jsonapi.org/examples/', //TODO reviews url
+            // }).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     setTimeout(document.location = "./views/home.html", 100);
+            //     console.log(error);
+            // });
 
-            <!-- add pending reviews list -->
-            <div class="none reviews">
+
+            // TODO for loop appending elements to reviews
+            for (let i = 0; i < 10; i++) {
+                let review = `
                 <div class="review">
                     <div class="profile-rating">
                         <div class="profile-img-mask">
@@ -375,15 +350,67 @@
                         <button class="accept-review action" type="button">Accept</button>
                         <button class="decline-review"> Decline</button>
                     </div>
-                </div>
-            </div>
+                    </div>
+                </div>`;
+                reviews.innerHTML += review;
+            }
+            // append it into main
+            main.insertBefore(reviews, main[0]);
+        }
+        usersHandler = (e) => {
+            reviews_tab.classList.remove('active');
+            add_resto_tab.classList.remove('active');
+            users_tab.classList.add('active');
+            main.innerHTML = ""
+            // create the inner HTML
+            let users = document.createElement("div");
+            users.classList.add('users-wrapper');
+            users.id = "users-wrapper";
+            let user_list = "";
 
-            <!-- add restaurant form -->
-            <div class="resto-form-wrapper">
-                <form id="resto-form" class="" name="resto-form" novalidate>
+            // TODO get data from api
+
+            // axios({
+            //     method: 'get',
+            //     url: 'https://jsonapi.org/examples/', //TODO users url
+            // }).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     setTimeout(document.location = "./views/home.html", 100);
+            //     console.log(error);
+            // });
+
+            // TODO make the for loop append response elements as users
+            for (let i = 0; i < 10; i++) {
+                let user = `
+                <div class="item">
+                    <span class="user-name">
+                        User Name
+                    </span>
+                    <img src="./assets/teasers/img-02.jpg" />
+                </div>
+                    `;
+                user_list += user
+            }
+            gallery = `<div class="myGallery">${user_list}</div>`
+            users.innerHTML = gallery;
+            main.insertBefore(users, main[0]);
+        }
+        addTabHandler = (e) => {
+            reviews_tab.classList.remove('active');
+            users_tab.classList.remove('active');
+            add_resto_tab.classList.add('active');
+            main.innerHTML = ""
+            // create the inner HTML
+            let resto_form = document.createElement("div");
+            resto_form.classList.add('resto-form-wrapper');
+            resto_form.innerHTML = `
+            <form id="resto-form" class="" name="resto-form" >
                     <!-- name -->
                     <label for="resto-description">Restaurant Name:</label>
-                    <input type="text" id="restaurant-name" placeholder="Enter restaurant name" required>
+                    <input type="text" id="resto-name" placeholder="Enter restaurant name" required>
+                    <label for="resto-address">Restaurant Address:</label>
+                    <input type="text" id="resto-address" placeholder="Enter restaurant address" required>
                     <!-- description -->
                     <label for="resto-description">Restaurant Description</label>
                     <textarea name="resto-description" id="resto-description" cols="62" rows="5"></textarea>
@@ -391,13 +418,52 @@
                     <label for="cover-input">Choose a cover image:</label>
                     <input type="file" id="cover-input" name="cover-input" accept="image/png, image/jpeg">
                     <!-- address -->
-                    <button id="submit-resto" class="action" type="button"> Submit</button>
-                    <button id="cancel-resto"> Cancel</button>
+                    <button id="submit-resto" class="action" type="button" onclick="submitResto(this)"> Submit</button>
+                    <button id="cancel-resto"  type="button" onclick="cancelResto(this)"> Cancel</button>
                 </form>
-            </div>
-        </main>
-    </div>
+            `;
+            main.insertBefore(resto_form, main[0]);
+            // TODO connect submit and cancel handlers
 
+        }
+
+        // form functions
+        // TODO figure converting image to BASE64
+        // then post using axios
+        let submitResto = () => {
+            let resto_name = document.getElementById('resto-name').value;
+            let resto_address = document.getElementById('resto-address').value;
+            let resto_description = document.getElementById('resto-description').value;
+            let resto_cover = document.getElementById('cover-input');
+            console.log(resto_name, resto_address, resto_description, resto_cover);
+            getBase64(resto_cover);
+
+            // let data = new FormData();
+            // data.append('email', document.getElementById('signin_email').value);
+            // data.append('password', document.getElementById('signin_password').value);
+            // axios({
+            //     method: 'post',
+            //     url: 'http://localhost/snoop/snoop-backend/postsignin.php',
+            //     data: data,
+            // }).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     setTimeout(document.location = "./views/home.html", 100);
+            //     console.log(error);
+            // });
+        }
+        let cancelResto = () => {
+            reviewsHandler();
+        }
+
+        // tab switching handlers
+        reviews_tab.addEventListener('click', reviewsHandler);
+        users_tab.addEventListener('click', usersHandler);
+        add_resto_tab.addEventListener('click', addTabHandler);
+
+        // defaulttab onload
+        window.onload = reviewsHandler;
+    </script>
 </body>
 
 </html>
