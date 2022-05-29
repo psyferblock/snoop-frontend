@@ -122,7 +122,8 @@
         }
 
         #main {
-            /* height: 100px; */
+            width: 100%;
+            /* height: 100%; */
             height: calc(100vh - 120px);
             overflow-y: scroll !important;
         }
@@ -175,6 +176,48 @@
             .decline-review {
                 margin: 0px auto;
             }
+        }
+
+        .resto-form-wrapper {
+            display: flex;
+            flex-direction: column;
+            /* max-height: 100%; */
+            max-width: 100%;
+            padding: 40px;
+            margin: 0;
+            width: 100%;
+        }
+
+        #resto-form {
+            max-width: 800px;
+        }
+
+        .resto-form-wrapper label {
+            margin: 10px 0px;
+            display: block;
+        }
+
+        .resto-form-wrapper textarea {
+            max-width: 100%;
+        }
+
+        #submit-resto,
+        #cancel-resto {
+            padding: 15px 40px;
+            margin-top: 20px;
+        }
+
+        #cover-input {
+            padding: 0px;
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            #submit-resto,
+            #cancel-resto {
+                margin-top: 0px;
+            }
+
         }
     </style>
     <title>SNOOP</title>
@@ -234,7 +277,7 @@
         <main id="main">
 
             <!-- users list -->
-            <div class="none users-wrapper">
+            <div class="none users-wrapper" id="users-wrapper">
                 <div class="myGallery">
                     <div class="item">
                         <span class="user-name">
@@ -343,10 +386,10 @@
                     <input type="text" id="restaurant-name" placeholder="Enter restaurant name" required>
                     <!-- description -->
                     <label for="resto-description">Restaurant Description</label>
-                    <textarea name="resto-description" id="resto-description" cols="100" rows="5"></textarea>
+                    <textarea name="resto-description" id="resto-description" cols="62" rows="5"></textarea>
                     <!-- cover image -->
-                    <label for="avatar">Choose a cover image:</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                    <label for="cover-input">Choose a cover image:</label>
+                    <input type="file" id="cover-input" name="cover-input" accept="image/png, image/jpeg">
                     <!-- address -->
                     <button id="submit-resto" class="action" type="button"> Submit</button>
                     <button id="cancel-resto"> Cancel</button>

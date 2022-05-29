@@ -1,9 +1,16 @@
 /* config webkit */
 input[type=file]::file-selector-button {
-    padding: 15px 40px;
     background-color: var(--accent-2);
+    color: var(--bright);
+    padding: 15px 40px;
     border: none;
     border-radius: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+input[type=file]::file-selector-button:hover {
+    color: red;
 }
 
 ::-webkit-scrollbar {
