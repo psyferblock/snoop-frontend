@@ -43,6 +43,7 @@
             font-size: .875rem
         }
 
+
         aside {
             width: 300px;
             max-width: 30vw;
@@ -59,6 +60,14 @@
             display: flex;
             flex-direction: column;
             list-style: none;
+        }
+
+        aside ul::before {
+            margin-top: 0px;
+            content: "";
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent-1);
         }
 
         aside ul>*:hover {
@@ -116,6 +125,33 @@
             /* height: 100px; */
             height: calc(100vh - 120px);
             overflow-y: scroll !important;
+        }
+
+        .myGallery {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        @media only screen and (max-width: 600px) {
+            .myGallery {
+                position: relative;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+            }
+        }
+
+        .user-name {
+            color: red;
+            margin: 0;
+            padding: 1em;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            color: rgb(255, 255, 255);
+            font-size: 1.6em;
         }
     </style>
     <title>SNOOP</title>
@@ -175,145 +211,57 @@
         <main id="main">
 
             <!-- users list -->
-            <div class="users-wrapper">
+            <div class=" none users-wrapper">
                 <div class="myGallery">
                     <div class="item">
-                        <a href="./restaurant.html?restaurantid=56">
-                            <div class="gradient">
-                                <span class="caption">
-                                    Restaurant Name
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                </span>
-                            </div>
-                            <img src="./assets/teasers/img-01.jpg" />
-                        </a>
-                    </div>
-                    <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
+                        <span class="user-name">
+                            User Name
+                        </span>
                         <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-03.jpg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-04.jpg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-05.jpg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-06.jpg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-07.jpg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-08.jpeg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
                     <div class="item">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-09.jpeg" />
+                        <span class="user-name">
+                            User Name
+                        </span>
+                        <img src="./assets/teasers/img-02.jpg" />
                     </div>
+
                     <div class="item">
                         <div class="gradient">
                             <span class="caption">
@@ -334,8 +282,34 @@
             </div>
 
             <!-- add pending reviews list -->
-            <div class="resto-form-wrapper">
-                reviews
+            <div class="reviews">
+                <div class="review">
+                    <div class="profile-rating">
+                        <div id="profile-img-mask">
+                            <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                        </div>
+                        <div class="rating">
+                            <span class="fa fa-lg fa-star checked"></span>
+                            <span class="fa fa-lg fa-star checked"></span>
+                            <span class="fa fa-lg fa-star checked"></span>
+                            <span class="fa fa-lg fa-star"></span>
+                            <span class="fa fa-lg fa-star"></span>
+                        </div>
+                    </div>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat
+                        inventore
+                        quae
+                        sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus
+                        unde porro
+                        quo
+                        dolorem.
+                    </p>
+                    <div class="accept-decline">
+                        <button id="accept-review" class="action" type="button">Accept</button>
+                        <button id="decline-review"> Decline</button>
+                    </div>
+                </div>
             </div>
 
             <!-- add restaurant form -->

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url("./theme.css");
 
@@ -81,28 +82,17 @@
 
         /* user-reviews section */
         label {
+            margin: 20px 0px;
             font-size: 20px;
         }
 
-        #user-reviews {
-            padding: 40px;
-        }
-
-        @media only screen and (max-width: 600px) {
-
-            #user-reviews {
-                padding: 20px;
-            }
-        }
-
-        form * {
-            border: 1px solid red;
+        #insert-review {
+            padding: 20px 40px;
         }
 
         form {
             display: flex;
             flex-wrap: wrap;
-            /* width: 100vw; */
             justify-items: center;
             justify-content: space-between;
         }
@@ -111,6 +101,7 @@
             align-self: flex-end;
             font-size: 20px;
             padding: 15px 40px;
+            margin-right: 0;
             font-weight: bold;
             cursor: pointer;
             z-index: 99;
@@ -130,26 +121,102 @@
         #part-two {
             min-width: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: space-between;
-            text-align: start;
-            align-content: flex-end;
         }
 
         #review-text-input {
-            max-width: 80vw;
+            width: 100%;
             margin-right: 40px;
-            height: 200px;
+            height: 100px;
 
         }
 
+        .rating {
+            display: flex;
+            flex-direction: row;
+        }
+
+
         .review {
-            border: 1px solid var(--dark);
-            border-radius: 15px;
-            padding: 15px;
-            margin-top: 40px;
-            height: 130px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(228, 228, 228);
+            padding: 20px 40px;
             overflow-y: scroll;
+        }
+
+        .review p {
+            width: 100%;
+            text-align: justify;
+            text-justify: auto;
+            margin: 20px 0px;
+        }
+
+        .profile-rating {
+            /* order: -2; */
+            display: flex;
+            vertical-align: middle;
+            align-items: center;
+        }
+
+        .accept-decline {
+            /* order: -1; */
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .accept-review,
+        .decline-review {
+            margin-left: 20px;
+        }
+
+
+        .review:nth-child(odd) {
+            background-color: rgb(201, 201, 201);
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .review::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .review {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .review .rating {
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #insert-review {
+                padding: 10px;
+            }
+
+            .review {
+                padding: 10px;
+            }
+
+            .rating {
+                display: flex;
+            }
+
+
+            .accept-decline {
+                order: 3;
+                justify-content: center;
+            }
+
+            .accept-review,
+            .decline-review {
+                margin: 0px auto;
+            }
         }
     </style>
     <title>SNOOP</title>
@@ -176,7 +243,18 @@
         <div class="gradient">
         </div>
         <div class="text">
-            <h1 class="name">Malak al Tawook</h1>
+            <span>
+                <h1 class="name">Malak al Tawook</h1>
+                <div class="rating">
+                    <span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star"></span>
+                        <span class="fa fa-2x fa-star"></span>
+                    </span>
+                </div>
+            </span>
             <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius similique reiciendis
                 aut
                 ducimus obcaecati minima hic atque. Quas exercitationem autem iure quod molestias qui necessitatibus.
@@ -187,26 +265,57 @@
     <section id="user-reviews">
         <form id="insert-review">
             <div id="part-one">
-                <label for="review-text-input">Leave us a review</label>
+                <label for="review-text-input">Leave a review</label>
                 <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
             </div>
             <div id="part-two">
-                <label for="review-text-input">Leave a rating</label>
-                <div class="rating"></div>
+                <div class="rating">
+                    <span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star checked"></span>
+                        <span class="fa fa-2x fa-star"></span>
+                        <span class="fa fa-2x fa-star"></span>
+                    </span>
+                </div>
                 <button id="submit-review" class="action" type="button"> Submit </button>
             </div>
         </form>
         <!-- TODO style reviews from database -->
         <div class="review">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium esse consectetur doloremque voluptates
-            enim quod unde ullam laboriosam, illum officiis sit quam at ipsa fugit, dolor cum ad quae exercitationem
-            reprehenderit, harum officia sapiente molestiae. Est eius rerum debitis sed impedit in provident officia,
-            illo nihil, numquam reprehenderit error ea? Exercitationem laudantium animi accusantium. Quo libero
-            laudantium, consequatur, repellendus, eaque est dicta unde harum excepturi sapiente possimus eligendi. Esse,
-            sit tenetur veniam voluptate dolor cum repudiandae officia error laborum qui eos deleniti ea odit aliquam
-            autem quasi, assumenda soluta ut minus commodi iusto? Illo quam, repudiandae accusamus totam debitis
-            corporis dolore tenetur! Nobis error sapiente quas a optio dolore, fugiat voluptatibus qui quos ab,
-            exercitationem quis reprehenderit rerum, illum excepturi!
+            <div class="profile-rating">
+                <div id="profile-img-mask">
+                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                </div>
+                <div class="rating">
+                    <span class="fa fa-lg fa-star checked"></span>
+                    <span class="fa fa-lg fa-star checked"></span>
+                    <span class="fa fa-lg fa-star checked"></span>
+                    <span class="fa fa-lg fa-star"></span>
+                    <span class="fa fa-lg fa-star"></span>
+                </div>
+            </div>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
+                quae
+                sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
+                quo
+                dolorem.
+            </p>
+            <div class="accept-decline">
+                <button class="accept-review action" type="button">Accept</button>
+                <button class="decline-review"> Decline</button>
+            </div>
+        </div>
+        <div class="review">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore quae
+            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro quo
+            dolorem.
+        </div>
+        <div class="review">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore quae
+            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro quo
+            dolorem.
         </div>
     </section>
     <script>
