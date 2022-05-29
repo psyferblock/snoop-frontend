@@ -8,6 +8,109 @@
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
     <style>
         @import url("./theme.css");
+
+        @media only screen and (max-width: 600px) {
+            #links {
+                margin-top: 10px;
+            }
+        }
+
+        body {
+            height: 100vh;
+            /* overflow-y: hidden; */
+        }
+
+        .hero-wrapper {
+            display: flex;
+
+        }
+
+        a {
+            color: var(--mid);
+            text-decoration: none;
+        }
+
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .text-sm {
+            font-size: .875rem
+        }
+
+        aside {
+            width: 300px;
+            max-width: 30vw;
+        }
+
+
+        aside ul {
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.5) 0%,
+                    rgba(0, 0, 0, 0.5) 100%);
+            overflow-y: hidden;
+            overflow-x: hidden;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+        }
+
+        aside ul>*:hover {
+            background-color: var(--bright);
+        }
+
+        aside ul>* {
+            padding: 20px;
+            padding-left: 40px;
+            text-align: start;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        aside ul * {
+            color: var(--bright);
+            font-size: 18px;
+
+        }
+
+        svg {
+            margin-right: 10px;
+            width: 1.6rem
+        }
+
+        @media only screen and (max-width: 600px) {
+            aside {
+                width: 100vw;
+                max-width: none;
+                margin-top: 0px;
+            }
+
+            aside ul {
+                overflow-x: scroll;
+                height: max-content;
+                flex-direction: row;
+            }
+
+            aside ul>* {
+                padding: 20px 0px;
+                text-align: center;
+                vertical-align: middle;
+                height: 60px;
+                width: 150px;
+            }
+        }
+
+        #main {
+            padding: 40px;
+            width: 100%;
+            border: 5px solid red;
+        }
     </style>
     <title>SNOOP</title>
 </head>
@@ -17,31 +120,77 @@
     <!-- TODO include navbar -->
     <nav class="top-nav">
         <div class="inner-nav">
-            <a href="./home.html">
-                <div class="brand">
+            <div class="brand">
+                <a href="./home.html">
                     <img src="./assets/snoop.png" alt="" id="logo">
-                </div>
-            </a>
-            <div>
-                <ul class="links">
-                    <!-- <li><a id="signup" href="./views/dashboard.html">Sign up</a></li> -->
-                    <!-- <li><a id="signin" href="https://www.w3schools.com">Sign in</a></li> -->
-                </ul>
+                </a>
             </div>
+            <ul id="links">
+                <div id="profile-img-mask">
+                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                </div>
+            </ul>
         </div>
     </nav>
 
-    <!-- users list -->
-    <div class="users-wrapper">
+    <div class="hero-wrapper">
+        <aside>
+            <ul>
+                <li class="active">
+                    <a class="tab inline-flex text-sm " href="#">
+                        <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="tab inline-flex text-sm " href="#">
+                        <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                        <span>Reviews</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="tab inline-flex text-sm " href="#">
+                        <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path
+                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                            </path>
+                        </svg>
+                        <span>Add Restaurant</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <main id="main">
+            <li class="">
+                <a class="tab inline-flex text-sm " href="#">
+                    <svg class="w-5 " fill="none" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                        </path>
+                    </svg>
+                    <span>Add Restaurant</span>
+                </a>
+            </li>
+            <!-- users list -->
+            <div class="users-wrapper">
+                heyyey
 
+            </div>
+            <!-- add pending reviews list -->
 
+            <!-- add restaurant form -->
+            <div class="resto-form-wrapper">
+
+            </div>
+        </main>
     </div>
-    <!-- add pending reviews list -->
 
-    <!-- add restaurant form -->
-    <div class="resto-form-wrapper">
-
-    </div>
 </body>
 
 </html>
