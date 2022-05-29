@@ -153,6 +153,29 @@
             color: rgb(255, 255, 255);
             font-size: 1.6em;
         }
+
+        .accept-decline {
+            /* order: -1; */
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .accept-review,
+        .decline-review {
+            margin-left: 20px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .accept-decline {
+                order: 3;
+                justify-content: center;
+            }
+
+            .accept-review,
+            .decline-review {
+                margin: 0px auto;
+            }
+        }
     </style>
     <title>SNOOP</title>
 </head>
@@ -168,8 +191,8 @@
                 </a>
             </div>
             <ul id="links">
-                <div id="profile-img-mask">
-                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                <div class="profile-img-mask">
+                    <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                 </div>
             </ul>
         </div>
@@ -211,7 +234,7 @@
         <main id="main">
 
             <!-- users list -->
-            <div class=" none users-wrapper">
+            <div class="none users-wrapper">
                 <div class="myGallery">
                     <div class="item">
                         <span class="user-name">
@@ -282,11 +305,11 @@
             </div>
 
             <!-- add pending reviews list -->
-            <div class="reviews">
+            <div class="none reviews">
                 <div class="review">
                     <div class="profile-rating">
-                        <div id="profile-img-mask">
-                            <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                        <div class="profile-img-mask">
+                            <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                         </div>
                         <div class="rating">
                             <span class="fa fa-lg fa-star checked"></span>
@@ -306,15 +329,28 @@
                         dolorem.
                     </p>
                     <div class="accept-decline">
-                        <button id="accept-review" class="action" type="button">Accept</button>
-                        <button id="decline-review"> Decline</button>
+                        <button class="accept-review action" type="button">Accept</button>
+                        <button class="decline-review"> Decline</button>
                     </div>
                 </div>
             </div>
 
             <!-- add restaurant form -->
             <div class="resto-form-wrapper">
-                add resto
+                <form id="resto-form" class="" name="resto-form" novalidate>
+                    <!-- name -->
+                    <label for="resto-description">Restaurant Name:</label>
+                    <input type="text" id="restaurant-name" placeholder="Enter restaurant name" required>
+                    <!-- description -->
+                    <label for="resto-description">Restaurant Description</label>
+                    <textarea name="resto-description" id="resto-description" cols="100" rows="5"></textarea>
+                    <!-- cover image -->
+                    <label for="avatar">Choose a cover image:</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                    <!-- address -->
+                    <button id="submit-resto" class="action" type="button"> Submit</button>
+                    <button id="cancel-resto"> Cancel</button>
+                </form>
             </div>
         </main>
     </div>

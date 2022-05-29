@@ -132,45 +132,12 @@
 
         }
 
-        .rating {
-            display: flex;
-            flex-direction: row;
-        }
-
-
-        .review {
-            display: flex;
-            flex-direction: column;
-            background-color: rgb(228, 228, 228);
-            padding: 20px 40px;
-            overflow-y: scroll;
-        }
-
-        .review p {
-            width: 100%;
-            text-align: justify;
-            text-justify: auto;
-            margin: 20px 0px;
-        }
-
         .profile-rating {
             /* order: -2; */
             display: flex;
             vertical-align: middle;
             align-items: center;
         }
-
-        .accept-decline {
-            /* order: -1; */
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .accept-review,
-        .decline-review {
-            margin-left: 20px;
-        }
-
 
         .review:nth-child(odd) {
             background-color: rgb(201, 201, 201);
@@ -194,28 +161,10 @@
             font-size: 20px;
         }
 
+
         @media only screen and (max-width: 600px) {
             #insert-review {
                 padding: 10px;
-            }
-
-            .review {
-                padding: 10px;
-            }
-
-            .rating {
-                display: flex;
-            }
-
-
-            .accept-decline {
-                order: 3;
-                justify-content: center;
-            }
-
-            .accept-review,
-            .decline-review {
-                margin: 0px auto;
             }
         }
     </style>
@@ -232,8 +181,8 @@
                 </a>
             </div>
             <ul id="links">
-                <div id="profile-img-mask">
-                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                <div class="profile-img-mask">
+                    <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                 </div>
             </ul>
         </div>
@@ -284,8 +233,8 @@
         <!-- TODO style reviews from database -->
         <div class="review">
             <div class="profile-rating">
-                <div id="profile-img-mask">
-                    <img id="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                <div class="profile-img-mask">
+                    <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                 </div>
                 <div class="rating">
                     <span class="fa fa-lg fa-star checked"></span>
@@ -302,20 +251,6 @@
                 quo
                 dolorem.
             </p>
-            <div class="accept-decline">
-                <button class="accept-review action" type="button">Accept</button>
-                <button class="decline-review"> Decline</button>
-            </div>
-        </div>
-        <div class="review">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore quae
-            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro quo
-            dolorem.
-        </div>
-        <div class="review">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore quae
-            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro quo
-            dolorem.
         </div>
     </section>
     <script>
