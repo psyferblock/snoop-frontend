@@ -153,7 +153,7 @@ textarea {
 
 @media only screen and (max-width: 600px) {
     .top-nav {
-        height: auto;
+        height: 100px;
         padding-bottom: 10px;
     }
 }
@@ -235,6 +235,74 @@ textarea {
     filter: grayscale(100);
     filter: brightness(30);
 }
+
+/* styling corner menu */
+
+
+.menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 250px;
+    height: 350px;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.75) 100%);
+    display: flex;
+    flex-direction: column;
+    color: var(--bright);
+    /* overflow: hidden; */
+}
+
+.menu a {
+    width: 100%;
+    display: block;
+    margin: 0px;
+}
+
+
+.x {
+    position: absolute;
+    margin: 30px;
+    font-size: 35px;
+    right: 0px;
+}
+
+.menu ul {
+    list-style: none;
+    color: var(--bright);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .menu {
+        right: 10px;
+        top: 10px;
+    }
+
+}
+
+.menu ul>* {
+    color: var(--bright);
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.75) 100%);
+    cursor: pointer;
+    border-top: 1px solid var(--bright);
+    width: 100%;
+    list-style: none;
+    padding: 20px 20px;
+    font-size: 20px;
+}
+
+.menu ul>*:hover {
+    color: var(--accent-1);
+    background-color: var(--bright);
+
+}
+
 
 /* modal styling */
 .modal-wrapper {

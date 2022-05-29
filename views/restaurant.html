@@ -181,23 +181,46 @@
                 </a>
             </div>
             <ul id="links">
-                <div class="profile-img-mask">
+                <div class="none profile-img-mask">
                     <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                 </div>
             </ul>
         </div>
+        <div class="menu">
+            <div class="x">X</div>
+            <ul>
+                <a href="#">
+                    <li class="" id="user-profile">
+                        Profile
+                    </li>
+                </a>
+                <a href="./dashboard.html">
+                    <li class="" id="dashboard">Dashboard</li>
+                </a>
+            </ul>
+        </div>
     </nav>
-    <!-- all relevant data of restaurant id xx-->
-    <div class="hero-wrapper">
-
-
-    </div>
-    <section id="user-reviews">
-
-        <!-- TODO style reviews from database -->
-
-    </section>
+    <div class="hero-wrapper"></div>
+    <section id="user-reviews"></section>
     <script>
+        // navbar management
+        let user_profile = document.getElementById('user-profile');
+        let dashboard = document.getElementById('dashboard');
+
+        let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
+        let x = document.getElementsByClassName('x')[0];
+        let menu = document.getElementsByClassName('menu')[0];
+        let menuHandler = () => {
+            menu.classList.toggle('none');
+            profile_mask.classList.toggle('none');
+
+        }
+        profile_mask.addEventListener('click', menuHandler);
+        x.addEventListener('click', menuHandler);
+        // TODO make clicking profile get details and display a modal
+        user_profile.addEventListener('click', profileHandler)
+        // end navbar management
+
         let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];
         let user_reviews = document.getElementById('user-reviews');
         console.log(hero_wrapper, user_reviews);
@@ -219,7 +242,6 @@
             // }).catch(function (error) {
             //     console.log(error);
             // });
-
 
             // TODO populate the DOM
             hero_wrapper.innerHTML = `
