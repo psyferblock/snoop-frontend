@@ -11,7 +11,6 @@
         @import url("./theme.css");
 
         /* hero styling */
-
         .hero-wrapper {
             position: relative;
             margin-top: -120px;
@@ -168,6 +167,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
 </head>
 
@@ -189,80 +189,113 @@
     </nav>
     <!-- all relevant data of restaurant id xx-->
     <div class="hero-wrapper">
-        <div class="gradient">
-        </div>
-        <div class="text">
-            <span>
-                <h1 class="name">Malak al Tawook</h1>
-                <div class="rating">
-                    <span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star"></span>
-                        <span class="fa fa-2x fa-star"></span>
-                    </span>
-                </div>
-            </span>
-            <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius similique reiciendis
-                aut
-                ducimus obcaecati minima hic atque. Quas exercitationem autem iure quod molestias qui necessitatibus.
-                Temporibus quas aperiam blanditiis eum!</h4>
-        </div>
-        <img src="./assets/restopics/img (1).jpg" alt="" class="cover">
+
+
     </div>
     <section id="user-reviews">
-        <form id="insert-review">
-            <div id="part-one">
-                <label for="review-text-input">Leave a review</label>
-                <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
-            </div>
-            <div id="part-two">
-                <div class="rating">
-                    <span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star checked"></span>
-                        <span class="fa fa-2x fa-star"></span>
-                        <span class="fa fa-2x fa-star"></span>
-                    </span>
-                </div>
-                <button id="submit-review" class="action" type="button"> Submit </button>
-            </div>
-        </form>
+
         <!-- TODO style reviews from database -->
-        <div class="review">
-            <div class="profile-rating">
-                <div class="profile-img-mask">
-                    <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
-                </div>
-                <div class="rating">
-                    <span class="fa fa-lg fa-star checked"></span>
-                    <span class="fa fa-lg fa-star checked"></span>
-                    <span class="fa fa-lg fa-star checked"></span>
-                    <span class="fa fa-lg fa-star"></span>
-                    <span class="fa fa-lg fa-star"></span>
-                </div>
-            </div>
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
-                quae
-                sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
-                quo
-                dolorem.
-            </p>
-        </div>
+
     </section>
     <script>
+        let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];
+        let user_reviews = document.getElementById('user-reviews');
+        console.log(hero_wrapper, user_reviews);
         // TODO on load, send a request
         // user id, and restaurant id from url
-        // server responds with 
-        window.onload = () => {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
+        // server responds with         
+        let populateRestaurant = () => {
+            // get relevant url params
+            const urlParams = new URLSearchParams(window.location.search);
             const restaurantid = urlParams.get('restaurantid');
-            console.log(queryString, urlParams, restaurantid);
+
+            // TODO concatenate url params to string
+            // axios({
+            //     method: 'get',
+            //     url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+            // }).then(function (response) {
+            //     // TODO check if sign up success, //display success message, and redirect to sign in form
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     console.log(error);
+            // });
+
+
+            // TODO populate the DOM
+            hero_wrapper.innerHTML = `
+                    <div class="gradient">
+                        </div>
+                    <div class="text">
+                        <span>
+                            <h1 class="name">Malak al Tawook</h1>
+                            <div class="rating">
+                                <span>
+                                    <span class="fa fa-2x fa-star checked"></span>
+                                    <span class="fa fa-2x fa-star checked"></span>
+                                    <span class="fa fa-2x fa-star checked"></span>
+                                    <span class="fa fa-2x fa-star"></span>
+                                    <span class="fa fa-2x fa-star"></span>
+                                </span>
+                            </div>
+                        </span>
+                        <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius similique reiciendis
+                            aut
+                            ducimus obcaecati minima hic atque. Quas exercitationem autem iure quod molestias qui necessitatibus.
+                            Temporibus quas aperiam blanditiis eum!</h4>
+                    </div>
+                    <img src="./assets/restopics/img (1).jpg" alt="" class="cover">
+                    `;
+            let form = `
+                <form id="insert-review">
+                    <div id="part-one">
+                        <label for="review-text-input">Leave a review</label>
+                        <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
+                    </div>
+                    <div id="part-two">
+                        <div class="rating">
+                            <span>
+                                <span class="fa fa-2x fa-star checked"></span>
+                                <span class="fa fa-2x fa-star checked"></span>
+                                <span class="fa fa-2x fa-star checked"></span>
+                                <span class="fa fa-2x fa-star"></span>
+                                <span class="fa fa-2x fa-star"></span>
+                            </span>
+                        </div>
+                        <button id="submit-review" class="action" type="button"> Submit </button>
+                    </div> 
+                </form>            
+            `;
+            let reviews = "";
+            // TODO for loop to populate all reviews
+            for (i = 0; i < 10; i++) {
+                let review = `
+                    <div class="review">
+                        <div class="profile-rating">
+                            <div class="profile-img-mask">
+                                <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                            </div>
+                            <div class="rating">
+                                <span class="fa fa-lg fa-star checked"></span>
+                                <span class="fa fa-lg fa-star checked"></span>
+                                <span class="fa fa-lg fa-star checked"></span>
+                                <span class="fa fa-lg fa-star"></span>
+                                <span class="fa fa-lg fa-star"></span>
+                            </div>
+                        </div>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
+                            quae
+                            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
+                            quo
+                            dolorem.
+                        </p>
+                    </div>
+                `;
+                reviews += review
+            }
+            user_reviews.innerHTML = `${form}${reviews}`
         }
+        window.onload = populateRestaurant;
     </script>
 </body>
 

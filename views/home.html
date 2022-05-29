@@ -71,195 +71,54 @@
     </nav>
     <!-- Start restaurants list -->
     <div class="myGallery">
-        <div class="item">
-            <a href="./restaurant.html?restaurantid=56">
-                <div class="gradient">
-                    <span class="caption">
-                        Restaurant Name
-                        <div class="rating">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                    </span>
-                </div>
-                <img src="./assets/teasers/img-01.jpg" />
-            </a>
-        </div>
-        <!-- TODO add a tag for better styling and nessecity -->
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-02.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-03.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-04.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-05.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-06.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-07.jpg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-08.jpeg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-09.jpeg" />
-        </div>
-        <div class="item">
-            <div class="gradient">
-                <span class="caption">
-                    Restaurant Name
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </span>
-            </div>
-            <img src="./assets/teasers/img-10.jpg" />
-        </div>
-
     </div>
     <!-- End restaurants list -->
     <script>
+        // TODO populate grid with restaurant cards
 
-        window.onload = () => {
-            // TODO populate grid with restaurant cards
-
+        let populateGrid = () => {
+            let myGallery = document.getElementsByClassName('myGallery')[0];
+            myGallery.innerHTML = ""
+            let elements = '';
+            // axios({
+            //     method: 'get',
+            //     url: 'https://jsonapi.org/examples/', //TODO reviews url
+            // }).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     setTimeout(document.location = "./views/home.html", 100);
+            //     console.log(error);
+            // });
+            for (let i = 0; i < 16; i++) {
+                let element = `
+                <div class="item">
+                    <a href="./restaurant.html?restaurantid=56">
+                        <div class="gradient">
+                            <span class="caption">
+                                Restaurant Name
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </span>
+                        </div>
+                        <img src="./assets/teasers/img-02.jpg" />
+                    </a>
+                </div>  
+                `;
+                elements += element
+            }
+            myGallery.innerHTML = elements;
         }
+
         let x = document.getElementsByTagName('button');
         console.log(x);
         [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
 
-        // let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
-        // let cancel_signin = document.getElementById('cancel-signin');
-        // let cancel_signup = document.getElementById('cancel-signup');
-        // let cancelInput = () => {
-        //     sign_in_form.classList.add('none')
-        //     sign_up_form.classList.add('none')
-        //     modal_wrapper.classList.add('none');
-        // }
-        // cancel_signin.addEventListener('click', cancelInput)
-        // cancel_signup.addEventListener('click', cancelInput)
-        // let sign_in_form = document.getElementById('sign-in-form');
-        // let sign_up_form = document.getElementById('sign-up-form');
-        // // TODO make these buttons let modal appear
-        // let signin = document.getElementById("signin");
-        // let signup = document.getElementById("signup");
-        // signin.addEventListener('click', () => {
-        //     sign_in_form.classList.remove('none')
-        //     modal_wrapper.classList.remove('none');
-        // })
-        // signup.addEventListener('click', () => {
-        //     sign_up_form.classList.remove('none')
-        //     modal_wrapper.classList.remove('none');
-        // })  
+        window.onload = populateGrid;
     </script>
 </body>
 
