@@ -181,12 +181,12 @@
                 </a>
             </div>
             <ul id="links">
-                <div class="none profile-img-mask">
+                <div class="profile-img-mask">
                     <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
                 </div>
             </ul>
         </div>
-        <div class="menu">
+        <div class="none menu">
             <div class="x">X</div>
             <ul>
                 <a href="#">
@@ -202,6 +202,10 @@
     </nav>
     <div class="hero-wrapper"></div>
     <section id="user-reviews"></section>
+    <div class="modal-wrapper ">
+        <div class="modal">
+        </div>
+    </div>
     <script>
         // navbar management
         let user_profile = document.getElementById('user-profile');
@@ -219,6 +223,11 @@
         x.addEventListener('click', menuHandler);
         // TODO make clicking profile get details and display a modal
         user_profile.addEventListener('click', profileHandler)
+
+        let profileHandler = () => {
+            menuHandler();
+
+        }
         // end navbar management
 
         let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];

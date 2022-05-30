@@ -172,11 +172,13 @@
         let signin = document.getElementById("signin");
         let signup = document.getElementById("signup");
         signin.addEventListener('click', () => {
-            sign_in_form.classList.remove('none')
+            sign_up_form.classList.add('none');
+            sign_in_form.classList.remove('none');
             modal_wrapper.classList.remove('none');
         })
         signup.addEventListener('click', () => {
-            sign_up_form.classList.remove('none')
+            sign_in_form.classList.add('none');
+            sign_up_form.classList.remove('none');
             modal_wrapper.classList.remove('none');
         })
 

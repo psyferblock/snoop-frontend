@@ -261,6 +261,11 @@ textarea {
 }
 
 
+.x:hover {
+    cursor: pointer;
+    color: var(--accent-1);
+}
+
 .x {
     position: absolute;
     margin: 30px;
@@ -318,13 +323,14 @@ textarea {
 
 .modal {
     margin: auto;
+    margin-top: 120px;
     border-radius: 15px;
     position: fixed;
-    top: 50%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 30vw;
-    height: 80vh;
+    min-width: 600px;
+    height: 74vh;
     background-color: var(--modal);
     padding: 15px;
     display: flex;
@@ -338,10 +344,12 @@ textarea {
 
 @media only screen and (max-width: 600px) {
     .modal {
+        margin-top: 30px;
         border-radius: 15px;
         position: fixed;
         top: 45%;
-        width: 80vw;
+        min-width: 320px;
+        width: 85vw;
         min-height: 75vh;
         background-color: var(--modal);
         transform: translate(-50%, -40%);
