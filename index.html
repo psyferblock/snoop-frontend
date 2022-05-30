@@ -67,7 +67,8 @@
                 </div>
             </a>
             <ul id="links">
-                <li><button class="action"> <a id="signin" href="#">Sign in</a></button></li>
+                <li><button class="action"> <a id="signin" href="#">Sign in</a></button>
+                </li>
                 <li><button class=""> <a id="signup" href="#">Sign up</a></button></li>
             </ul>
         </div>
@@ -168,10 +169,10 @@
             </form>
             <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
             <form id="sign-in-form" class="none" name="sign-in-form" novalidate>
-                <input type="email" id="signin_email" placeholder="Enter your email" required>
+                <input type="email" id="signin_email" placeholder="Enter your email" value="hamoudi@gmail.com" required>
                 <!-- password -->
                 <label for="password">Password (8 characters minimum):</label>
-                <input type="password" id="signin_password" name="password" minlength="8" value="helloworld" required>
+                <input type="password" id="signin_password" name="password" minlength="8" value="heyhey" required>
                 <button id="signin-submit" class="action" type="button"> Sign In</button>
                 <button id="cancel-signin"> Cancel</button>
             </form>
@@ -181,7 +182,8 @@
         let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
         let cancel_signin = document.getElementById('cancel-signin');
         let cancel_signup = document.getElementById('cancel-signup');
-        let cancelInput = () => {
+        let cancelInput = (e) => {
+            e.preventDefault()
             sign_in_form.classList.add('none')
             sign_up_form.classList.add('none')
             modal_wrapper.classList.add('none');
@@ -216,20 +218,23 @@
             data.append('password', document.getElementById('password').value);
             axios({
                 method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+                url: 'http://localhost/snoop/Snoop-backend/signup.php',
                 data: data,
             }).then(function (response) {
-                // TODO add the id to local storage
-                // TODO add full name as well, for editing
-                sessionStorage.setItem('user_id', '1234');
-                sessionStorage.setItem('user_full_name', 'hsein bitar');
-                sessionStorage.setItem('user_is_admin', false);//TODO get admin status from server
-                // TODO if sign up success, redirect to home
-                document.location = "./views/home.html"
-                console.log(response);
+                sessionStorage.setItem('user_id', response.data.user_id);
+                sessionStorage.setItem('user_full_name', response.data.full_name);
+                sessionStorage.setItem('email', response.data.email);
+                sessionStorage.setItem('dob', response.data.date_of_birth);
+                sessionStorage.setItem('user_is_admin', response.data.user_type);
+                // if sign up success, redirect to home
+                if (response.data.user_id) {
+                    setTimeout(() => document.location = "./views/home.html", 500)
+                } else {
+                    setTimeout(() => document.location = "./index.html", 500)
+                }
             }).catch(function (error) {
-                document.location = "./index.html"
                 console.log(error);
+                setTimeout(() => document.location = "./index.html", 500)
             });
         }
         signup_submit.addEventListener('click', signupSubmitHandler);
@@ -243,24 +248,24 @@
             data.append('password', document.getElementById('signin_password').value);
             axios({
                 method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignin.php',
+                url: 'http://localhost/snoop/Snoop-backend/signin.php',
                 data: data,
             }).then(function (response) {
-                // TODO add the id to local storage
-                // TODO add full name as well, for editing
-                sessionStorage.setItem('user_id', '1234');
-                sessionStorage.setItem('user_full_name', 'hsein bitar');
-                sessionStorage.setItem('email', 'hseinbitar22@gmail.com');
-                sessionStorage.setItem('dob', '2022-05-25');
-                sessionStorage.setItem('user_is_admin', false);//TODO get admin status from server
-                // TODO if sign in success, redirect to home
-                document.location = "./views/home.html"
-                console.log(response);
+                console.log(response.data);
+                sessionStorage.setItem('user_id', response.data.user_id);
+                sessionStorage.setItem('user_full_name', response.data.full_name);
+                sessionStorage.setItem('email', response.data.email);
+                sessionStorage.setItem('dob', response.data.date_of_birth);
+                sessionStorage.setItem('user_is_admin', response.data.user_type);
+                // if sign in success, redirect to home
+                if (response.data.user_id) {
+                    setTimeout(() => document.location = "./views/home.html", 500)
+                } else {
+                    setTimeout(() => document.location = "./index.html", 500)
+                }
             }).catch(function (error) {
-                sessionStorage.setItem('user_id', '1234');
-                sessionStorage.setItem('user_full_name', 'hsein bitar');
-                document.location = "./views/home.html"
                 console.log(error);
+                setTimeout(() => document.location = "./index.html", 500)
             });
 
         }

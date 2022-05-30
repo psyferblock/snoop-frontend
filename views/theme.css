@@ -432,6 +432,7 @@ form button {
 }
 
 .myGallery .item {
+    text-align: center;
     position: relative;
     overflow: hidden;
     min-height: 100%;
@@ -476,7 +477,6 @@ form button {
 
 @media only screen and (max-width: 600px) {
     .myGallery .item {
-        text-align: center;
         border: 5px solid var(--bright);
         transform: translateY(0%);
         cursor: pointer;

@@ -220,6 +220,35 @@
         </div>
     </div>
     <script>
+        // convert score to stars element on hero image
+        let generateMainRating = (score) => {
+            let rating_html_string = '';
+            let i = 0;
+            while (i < score) {
+                rating_html_string += '<span class="fa fa-2x fa-star checked"></span>';
+                i++;
+            }
+            while (i < 5) {
+                rating_html_string += '<span class="fa fa-2x fa-star"></span>';
+                i++;
+            }
+            return rating_html_string;
+        }
+
+        // convert score to stars element on reviews
+        let generateReviewRating = (score) => {
+            let rating_html_string = '';
+            let i = 0;
+            while (i < score) {
+                rating_html_string += '<span class="fa fa-lg fa-star checked"></span>';
+                i++;
+            }
+            while (i < 5) {
+                rating_html_string += '<span class="fa fa-lg fa-star"></span>';
+                i++;
+            }
+            return rating_html_string;
+        }
         // remove dashboard button for non admin users
         if (!sessionStorage.getItem('user-is_admin')) {
             document.getElementById('dashboard').outerHTML = ""
@@ -261,7 +290,7 @@
             // }).then(function (response) {
             //     console.log(response);
             // }).catch(function (error) {
-            //     setTimeout(document.location = "./views/home.html", 100);
+            //     setTimeout(()=>document.location = "./views/home.html", 100);
             //     console.log(error);
             // });
             profile_modal.classList.toggle('none');
@@ -287,7 +316,7 @@
             //    TODO api that takes user id and password, and updates name if they were valid
             // axios({
             //     method: 'post',
-            //     url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+            //     url: 'http://localhost/snoop/Snoop-backend/postsignup.php',
             //     data: data,
             // }).then(function (response) {
             //     // TODO check if sign up success, //display success message, and redirect to sign in form
@@ -295,8 +324,7 @@
             // }).catch(function (error) {
             //     console.log(error);
             // });
-
-            // TODO send data to backend with axios
+            // TODO set local storage according to reply
             profile_modal.classList.toggle('none');
         }
         update_submit.addEventListener('click', updateSubmitHandler)
@@ -305,31 +333,41 @@
         let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];
         let user_reviews = document.getElementById('user-reviews');
         console.log(hero_wrapper, user_reviews);
-        // TODO on load, send a request
-        // user id, and restaurant id from url
-        // server responds with         
         let populateRestaurant = () => {
-
-            // TODO concatenate url params to string
-            // axios({
-            //     method: 'get',
-            //     url: 'http://localhost/snoop/snoop-backend/postsignup.php',
-            // }).then(function (response) {
-            //     // TODO check if sign up success, //display success message, and redirect to sign in form
-            //     console.log(response);
-            // }).catch(function (error) {
-            //     console.log(error);
-            // });
-
-            // TODO populate the DOM
-            hero_wrapper.innerHTML = `
-                    <div class="gradient">
+            axios({
+                method: 'get',
+                url: `http://localhost/snoop/Snoop-backend/getrestaurant.php?id=${restaurant_id}`,
+            }).then(function (response) {
+                let resto = response.data[0];
+                console.log(resto);
+                console.log(response);
+                // TODO populate the DOM
+                hero_wrapper.innerHTML = `
+                        <div class="gradient">
+                            </div>
+                        <div class="text">
+                            <span>
+                                <h1 class="name">${resto.rest_name}</h1>
+                                <div class="rating">
+                                    <span>
+                                        ${generateMainRating(resto.avg)}
+                                    </span>
+                                </div>
+                            </span>
+                            <h4 class="description">${resto.description}</h4>
                         </div>
-                    <div class="text">
-                        <span>
-                            <h1 class="name">Malak al Tawook</h1>
-                            <div class="rating">
-                                <span>
+                        <img src=${resto.cover_image_uri} alt="restaurant cover image" class="cover">
+                        `;
+                let form = `
+                    <form id="insert-review" novalidate>
+                        <div id="part-one">
+                            <label for="review-text-input">Leave a review</label>
+                            <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
+                        </div>
+                        <div id="part-two">
+                            <div class="rating" id="review-rating">
+                                <span> 
+                                    // TODO input element for stars
                                     <span class="fa fa-2x fa-star checked"></span>
                                     <span class="fa fa-2x fa-star checked"></span>
                                     <span class="fa fa-2x fa-star checked"></span>
@@ -337,63 +375,39 @@
                                     <span class="fa fa-2x fa-star"></span>
                                 </span>
                             </div>
-                        </span>
-                        <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius similique reiciendis
-                            aut
-                            ducimus obcaecati minima hic atque. Quas exercitationem autem iure quod molestias qui necessitatibus.
-                            Temporibus quas aperiam blanditiis eum!</h4>
-                    </div>
-                    <img src="./assets/restopics/img (1).jpg" alt="" class="cover">
-                    `;
-            let form = `
-                <form id="insert-review" novalidate>
-                    <div id="part-one">
-                        <label for="review-text-input">Leave a review</label>
-                        <textarea name="review-text-input" id="review-text-input" cols="100" rows="5"></textarea>
-                    </div>
-                    <div id="part-two">
-                        <div class="rating" id="review-rating">
-                            <span>
-                                <span class="fa fa-2x fa-star checked"></span>
-                                <span class="fa fa-2x fa-star checked"></span>
-                                <span class="fa fa-2x fa-star checked"></span>
-                                <span class="fa fa-2x fa-star"></span>
-                                <span class="fa fa-2x fa-star"></span>
-                            </span>
-                        </div>
-                        <button id="submit-review" class="action" type="button" onclick="submitReview(this)" > Submit </button>
-                    </div> 
-                </form>            
-            `;
-            let reviews = "";
-            // TODO for loop to populate all reviews
-            for (i = 0; i < 10; i++) {
-                let review = `
-                    <div class="review">
-                        <div class="profile-rating">
-                            <div class="profile-img-mask">
-                                <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
-                            </div>
-                            <div class="rating">
-                                <span class="fa fa-lg fa-star checked"></span>
-                                <span class="fa fa-lg fa-star checked"></span>
-                                <span class="fa fa-lg fa-star checked"></span>
-                                <span class="fa fa-lg fa-star"></span>
-                                <span class="fa fa-lg fa-star"></span>
-                            </div>
-                        </div>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
-                            quae
-                            sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
-                            quo
-                            dolorem.
-                        </p>
-                    </div>
+                            <button id="submit-review" class="action" type="button" onclick="submitReview(this)">Submit</button>
+                        </div> 
+                    </form>            
                 `;
-                reviews += review
-            }
-            user_reviews.innerHTML = `${form}${reviews}`
+                let reviews = "";
+                // TODO for loop to populate all reviews
+                for (i = 1; i < response.data.length; i++) {
+                    let review = `
+                        <div class="review">
+                            <div class="profile-rating">
+                                <div class="profile-img-mask">
+                                    <img class="profile-img" src="./assets/profile.png" alt="">
+                                </div>
+                                <div class="rating">
+                                    ${generateReviewRating(response.data[i].rating_score)}
+                                </div>
+                            </div>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
+                                quae
+                                sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
+                                quo
+                                dolorem.
+                            </p>
+                        </div>
+                    `;
+                    reviews += review
+                }
+                user_reviews.innerHTML = `${form}${reviews}`
+            }).catch(function (error) {
+                console.log(error);
+            });
+
         }
         // TODO finish the submit review method
         let submitReview = () => {
@@ -401,15 +415,20 @@
             data.append('user_id', user_id);
             data.append('restaurant_id', restaurant_id);
             data.append('review_text', document.getElementById('review-text-input').value);
-            data.append('review_rating', 5);
-            console.log(data);
+            // data.append('rating_score', document.getElementById('review-rating').value);
             // TODO find an input which makes stars into value
-            // data.append('review_rating', document.getElementById('review-rating').value);
+            // TODO get input 
+            data.append('rating_score', 5);
+            console.log(data);
             axios({
                 method: 'post',
-                url: 'http://localhost/snoop/snoop-backend/postsignup.php',
+                url: 'http://localhost/snoop/Snoop-backend/addreview.php',
                 data: data,
             }).then(function (response) {
+                if (response.data.success) {
+                    // TODO display a success message
+                    document.getElementById('review-text-input').value = ''
+                }
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);

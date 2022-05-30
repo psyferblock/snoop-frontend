@@ -60,6 +60,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
 </head>
 
@@ -99,46 +100,67 @@
     </div>
     <!-- End restaurants list -->
     <script>
+        let generateRating = (score) => {
+            let rating_html_string = '';
+            let i = 0;
+            while (i < score) {
+                rating_html_string += '<span class="fa fa-star checked"></span>';
+                i++;
+            }
+            while (i < 5) {
+                rating_html_string += '<span class="fa fa-star"></span>';
+                i++;
+            }
+            return rating_html_string;
+        }
+
+
+        let user_id = sessionStorage.getItem('user_id');
+        let full_name = sessionStorage.getItem('user_full_name');
+        let email = sessionStorage.getItem('email');
+        let user_type = sessionStorage.getItem('user_is_admin');
+        let dob = sessionStorage.getItem('dob');
+        console.log(user_id, full_name, email, user_type, dob);
         // populates DOM grid with restaurant cards
         let populateGrid = () => {
-            let user_id = localStorage.getItem('user_id');
-            console.log(user_id)
+            if (!user_id) return;
             let myGallery = document.getElementsByClassName('myGallery')[0];
             myGallery.innerHTML = ""
-            let elements = '';
-            // TODO add user id to params validate on backend
-            // TODO return 20 restos from backend
-            // axios({
-            //     method: 'get',
-            //     url: `http://localhost/snoop/snoop-backend/getrestaurants.php?user-id=${user_id}`,
-            // }).then(function (response) {
-            for (let i = 0; i < 20; i++) {
-                let element = `
-                    <div class="item">
-                        <a href="./restaurant.html?restaurantid=56"> //TODO 
-                            <div class="gradient">
-                                <span class="caption">
-                                    Restaurant Name //TODO
-                                    <div class="rating"> //TODO
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                </span>
-                            </div>
-                            <img src="./assets/teasers/img-02.jpg" /> //TODO
-                        </a>
-                    </div>  
-                    `;
-                elements += element
-            }
-            myGallery.innerHTML = elements;
-            //     console.log(response);
-            // }).catch(function (error) {
-            //     console.log(error);
-            // });
+            let data = new FormData();
+            data.append('user_id', user_id);
+            data.append('email', email);
+            axios({
+                method: 'post',
+                url: "http://localhost/snoop/Snoop-backend/getrestaurants.php",
+                data: data,
+            }).then(function (response) {
+                console.log(response.data);
+                let elements = '';
+                let restaurants = response.data;
+                restaurants.forEach((resto) => {
+                    console.log(resto);
+                    let element = `
+                        <div class="item">
+                            <a href=./restaurant.html?restaurantid=${resto.id}>
+                                <div class="gradient">
+                                    <span class="caption">
+                                       ${resto.rest_name} 
+                                        <div class="rating">
+                                            ${generateRating(resto.avg)}
+                                        </div>
+                                    </span>
+                                </div>
+                                <img src=${resto.cover_image_uri} /> //TODO
+                            </a>
+                        </div>  
+                        `;
+                    elements += element
+                })
+                myGallery.innerHTML = elements;
+            }).catch(function (error) {
+                console.log(error);
+                // setTimeout(() => document.location = "../index.html", 3000)
+            });
         }
 
         window.onload = populateGrid;
