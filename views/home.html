@@ -34,11 +34,23 @@
                     rgba(0, 0, 0, 0.9) 100%);
         }
 
+        /* 
         .myGallery *:hover+.caption {
             display: block;
-        }
+        } */
 
         @media only screen and (max-width: 600px) {
+            .gradient {
+                background: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0.0) 40%,
+                        rgba(0, 0, 0, 0.5) 70%,
+                        rgba(0, 0, 0, 0.9) 100%);
+            }
+
+            .myGallery *+.caption {
+                display: block;
+            }
+
             #links {
                 margin-top: 10px;
             }
@@ -64,7 +76,7 @@
             </div>
             <ul id="links">
                 <div class="profile-img-mask">
-                    <img class="profile-img" src="./assets/teasers/img-01.jpg" alt="">
+                    <img class="profile-img" src="./assets/profile.png" alt="">
                 </div>
             </ul>
         </div>
@@ -87,49 +99,47 @@
     </div>
     <!-- End restaurants list -->
     <script>
-        // TODO populate grid with restaurant cards
-
+        // populates DOM grid with restaurant cards
         let populateGrid = () => {
+            let user_id = localStorage.getItem('user_id');
+            console.log(user_id)
             let myGallery = document.getElementsByClassName('myGallery')[0];
             myGallery.innerHTML = ""
             let elements = '';
+            // TODO add user id to params validate on backend
+            // TODO return 20 restos from backend
             // axios({
             //     method: 'get',
-            //     url: 'https://jsonapi.org/examples/', //TODO reviews url
+            //     url: `http://localhost/snoop/snoop-backend/getrestaurants.php?user-id=${user_id}`,
             // }).then(function (response) {
-            //     console.log(response);
-            // }).catch(function (error) {
-            //     setTimeout(document.location = "./views/home.html", 100);
-            //     console.log(error);
-            // });
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 20; i++) {
                 let element = `
-                <div class="item">
-                    <a href="./restaurant.html?restaurantid=56">
-                        <div class="gradient">
-                            <span class="caption">
-                                Restaurant Name
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </span>
-                        </div>
-                        <img src="./assets/teasers/img-02.jpg" />
-                    </a>
-                </div>  
-                `;
+                    <div class="item">
+                        <a href="./restaurant.html?restaurantid=56"> //TODO 
+                            <div class="gradient">
+                                <span class="caption">
+                                    Restaurant Name //TODO
+                                    <div class="rating"> //TODO
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </span>
+                            </div>
+                            <img src="./assets/teasers/img-02.jpg" /> //TODO
+                        </a>
+                    </div>  
+                    `;
                 elements += element
             }
             myGallery.innerHTML = elements;
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     console.log(error);
+            // });
         }
-
-        let x = document.getElementsByTagName('button');
-        console.log(x);
-        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
 
         window.onload = populateGrid;
     </script>

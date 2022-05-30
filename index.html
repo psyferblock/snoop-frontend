@@ -27,13 +27,27 @@
             margin: auto;
         }
 
+        @media only screen and (max-width: 1400px) {
+            #welcome-msg {
+                line-height: normal;
+                margin: auto;
+                /* margin-left: 20px;
+                margin-right: 20px; */
+                transform: translateY(0px);
+            }
+        }
+
         @media only screen and (max-width: 600px) {
             #welcome-msg {
-                margin: auto;
-                margin-top: 10px;
-                margin-bottom: 20px;
+                padding: 0px 20px;
                 transform: translateY(0px);
+            }
+        }
 
+        @media only screen and (max-width: 1400px) {
+            .top-nav {
+                height: auto;
+                padding-bottom: 10px;
             }
         }
     </style>
@@ -112,6 +126,18 @@
         <div class="item">
             <img src="./views/assets/teasers/img-16.jpeg" />
         </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-17.jpeg" />
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-18.jpg" />
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-19.jpg" />
+        </div>
+        <div class="item">
+            <img src="./views/assets/teasers/img-20.jpg" />
+        </div>
     </div>
     <!-- End teasers -->
 
@@ -152,10 +178,6 @@
         </div>
     </div>
     <script>
-        let x = document.getElementsByTagName('button');
-        console.log(x);
-        [...x].forEach(e => e.addEventListener('click', () => { console.log('clicked'); }))
-
         let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
         let cancel_signin = document.getElementById('cancel-signin');
         let cancel_signup = document.getElementById('cancel-signup');
@@ -168,7 +190,7 @@
         cancel_signup.addEventListener('click', cancelInput)
         let sign_in_form = document.getElementById('sign-in-form');
         let sign_up_form = document.getElementById('sign-up-form');
-        // TODO make these buttons let modal appear
+        // these buttons let modal appear
         let signin = document.getElementById("signin");
         let signup = document.getElementById("signup");
         signin.addEventListener('click', () => {
@@ -197,9 +219,16 @@
                 url: 'http://localhost/snoop/snoop-backend/postsignup.php',
                 data: data,
             }).then(function (response) {
-                // TODO check if sign up success, //display success message, and redirect to sign in form
+                // TODO add the id to local storage
+                // TODO add full name as well, for editing
+                sessionStorage.setItem('user_id', '1234');
+                sessionStorage.setItem('user_full_name', 'hsein bitar');
+                sessionStorage.setItem('user_is_admin', false);//TODO get admin status from server
+                // TODO if sign up success, redirect to home
+                document.location = "./views/home.html"
                 console.log(response);
             }).catch(function (error) {
+                document.location = "./index.html"
                 console.log(error);
             });
         }
@@ -217,11 +246,20 @@
                 url: 'http://localhost/snoop/snoop-backend/postsignin.php',
                 data: data,
             }).then(function (response) {
-                // TODO check if sign in success, //display success message, and redirect to home
+                // TODO add the id to local storage
+                // TODO add full name as well, for editing
+                sessionStorage.setItem('user_id', '1234');
+                sessionStorage.setItem('user_full_name', 'hsein bitar');
+                sessionStorage.setItem('email', 'hseinbitar22@gmail.com');
+                sessionStorage.setItem('dob', '2022-05-25');
+                sessionStorage.setItem('user_is_admin', false);//TODO get admin status from server
+                // TODO if sign in success, redirect to home
+                document.location = "./views/home.html"
                 console.log(response);
             }).catch(function (error) {
-                // TODO move this redirection t only happen if promise resolves
-                setTimeout(document.location = "./views/home.html", 100);
+                sessionStorage.setItem('user_id', '1234');
+                sessionStorage.setItem('user_full_name', 'hsein bitar');
+                document.location = "./views/home.html"
                 console.log(error);
             });
 

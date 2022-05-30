@@ -40,7 +40,7 @@ input[type=file]::file-selector-button:hover {
     --accent-1: #b81212;
     --accent-2: rgb(90, 170, 53);
     --modal-wrapper: rgba(0, 0, 0, 0.75);
-    --modal: rgba(222, 222, 222, 0.45)
+    --modal: rgba(222, 222, 222, 0.65)
 }
 
 html,
@@ -110,7 +110,7 @@ button:hover {
 }
 
 label {
-    line-height: 30px;
+    line-height: 20px;
 }
 
 textarea {
@@ -134,10 +134,10 @@ textarea {
 input,
 select,
 textarea {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     margin-right: 15px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
 }
 
@@ -217,6 +217,7 @@ textarea {
 
 @media only screen and (max-width: 600px) {
     #links {
+        margin: auto;
         margin-top: 90px;
     }
 
@@ -311,7 +312,7 @@ textarea {
 
 /* modal styling */
 .modal-wrapper {
-    z-index: 199;
+    z-index: 1999;
     width: 120vw;
     height: 120vh;
     position: fixed;
@@ -323,14 +324,13 @@ textarea {
 
 .modal {
     margin: auto;
-    margin-top: 120px;
     border-radius: 15px;
     position: fixed;
-    top: 42%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 600px;
-    height: 74vh;
+    height: 80vh;
     background-color: var(--modal);
     padding: 15px;
     display: flex;
@@ -344,15 +344,14 @@ textarea {
 
 @media only screen and (max-width: 600px) {
     .modal {
-        margin-top: 30px;
         border-radius: 15px;
         position: fixed;
-        top: 45%;
+        top: 50%;
         min-width: 320px;
         width: 85vw;
         min-height: 75vh;
         background-color: var(--modal);
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -50%);
     }
 
 }
@@ -364,7 +363,7 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
+    max-height: 100%;
 }
 
 
@@ -380,12 +379,11 @@ textarea {
     /* Firefox */
 }
 
-
 form button {
     margin-bottom: 15px;
     margin-right: 15px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px 15px;
     font-size: 18px;
 }
 
@@ -419,6 +417,9 @@ form button {
 
 @media only screen and (max-width: 600px) {
     .myGallery {
+        padding: 4px;
+        display: grid;
+        grid-gap: 0px;
         position: relative;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
@@ -471,6 +472,20 @@ form button {
 .myGallery .item:hover .caption {
     transform: translateY(0%);
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .myGallery .item {
+        text-align: center;
+        border: 5px solid var(--bright);
+        transform: translateY(0%);
+        cursor: pointer;
+    }
+
+    .myGallery .item .caption {
+        transform: translateY(0%);
+        cursor: pointer;
+    }
 }
 
 /* reviews */
