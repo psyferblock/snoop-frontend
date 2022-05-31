@@ -215,47 +215,24 @@
                 <label for="password">Enter your password for security:</label>
                 <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
                 <button id="update-submit" class="action" type="button"> Update</button>
-                <button id="cancel-edit"> Cancel</button>
+                <button id="cancel-edit" type="button"> Cancel</button>
             </form>
         </div>
     </div>
+    <script src="./rating_generators.js"></script>
     <script>
-        // convert score to stars element on hero image
-        let generateMainRating = (score) => {
-            let rating_html_string = '';
-            let i = 0;
-            while (i < score) {
-                rating_html_string += '<span class="fa fa-2x fa-star checked"></span>';
-                i++;
-            }
-            while (i < 5) {
-                rating_html_string += '<span class="fa fa-2x fa-star"></span>';
-                i++;
-            }
-            return rating_html_string;
-        }
-
-        // convert score to stars element on reviews
-        let generateReviewRating = (score) => {
-            let rating_html_string = '';
-            let i = 0;
-            while (i < score) {
-                rating_html_string += '<span class="fa fa-lg fa-star checked"></span>';
-                i++;
-            }
-            while (i < 5) {
-                rating_html_string += '<span class="fa fa-lg fa-star"></span>';
-                i++;
-            }
-            return rating_html_string;
-        }
         // remove dashboard button for non admin users
         if (!sessionStorage.getItem('user-is_admin')) {
             document.getElementById('dashboard').outerHTML = ""
         }
+
         // user data
         let user_id = sessionStorage.getItem('user_id');
         let user_full_name = sessionStorage.getItem('user_full_name');
+        let email = sessionStorage.getItem('email');
+        let dob = sessionStorage.getItem('dob');
+
+
         // get relevant url params
         const urlParams = new URLSearchParams(window.location.search);
         const restaurant_id = urlParams.get('restaurantid');
@@ -268,11 +245,13 @@
         let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
         let x_menu = document.getElementById('x-menu');
         let menu = document.getElementsByClassName('menu')[0];
+
         let menuHandler = () => {
             menu.classList.toggle('none');
             profile_mask.classList.toggle('none');
 
         }
+
         profile_mask.addEventListener('click', menuHandler);
         x_menu.addEventListener('click', menuHandler);
         // end navbar management
@@ -283,47 +262,44 @@
         let password = document.getElementById('password');
         let showProfileHandler = () => {
             menuHandler();
-            // TODO get data of user and change form values
-            // axios({
-            //     method: 'get',
-            //     url: 'https://jsonapi.org/examples/', //TODO get user details api just send user id
-            // }).then(function (response) {
-            //     console.log(response);
-            // }).catch(function (error) {
-            //     setTimeout(()=>document.location = "./views/home.html", 100);
-            //     console.log(error);
-            // });
+            //   getting data from locat storage, which was set on sign in or sign up
+            document.getElementById('full_name').value = user_full_name;
+            document.getElementById('email').value = email;
+            document.getElementById('date_of_birth').value = dob.slice(0, 10);
             profile_modal.classList.toggle('none');
-            document.getElementById('full_name').value = user_full_name//TODO put name of user
-            document.getElementById('full_name').value = 'hello world'
         }
         user_profile.addEventListener('click', showProfileHandler)
 
         let update_submit = document.getElementById('update-submit')
-        let updateSubmitHandler = () => {
+        let updateSubmitHandler = (e) => {
             // TODO get data from form
             e.preventDefault();
             let data = new FormData();
-            data.append('user_id', sessionStorage.getItem('user_id'));
+            data.append('email', sessionStorage.getItem('email'));
             data.append('full_name', document.getElementById('full_name').value);
-
-            // commented because we are not updating these fields
-            // data.append('email', document.getElementById('email').value);
-            // data.append('gender', document.getElementById('gender').value);
-            // data.append('date_of_birth', document.getElementById('date_of_birth').value);
-
             data.append('password', document.getElementById('password').value);
+
             //    TODO api that takes user id and password, and updates name if they were valid
-            // axios({
-            //     method: 'post',
-            //     url: 'http://localhost/snoop/Snoop-backend/postsignup.php',
-            //     data: data,
-            // }).then(function (response) {
-            //     // TODO check if sign up success, //display success message, and redirect to sign in form
-            //     console.log(response);
-            // }).catch(function (error) {
-            //     console.log(error);
-            // });
+            axios({
+                method: 'post',
+                url: 'http://localhost/snoop/Snoop-backend/updateuser.php',
+                data: data,
+            }).then(function (response) {
+                console.log(response);
+                sessionStorage.setItem('user_id', response.data.user_id);
+                sessionStorage.setItem('user_full_name', response.data.full_name);
+                sessionStorage.setItem('email', response.data.email);
+                sessionStorage.setItem('dob', response.data.date_of_birth);
+                sessionStorage.setItem('user_is_admin', response.data.user_type);
+                // if sign in success, redirect to home
+                if (response.data.user_id) {
+                    // setTimeout(() => document.location = "./views/home.html", 500)
+                } else {
+                    // setTimeout(() => document.location = "../index.html", 500)
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
             // TODO set local storage according to reply
             profile_modal.classList.toggle('none');
         }
@@ -393,11 +369,7 @@
                                 </div>
                             </div>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cum quae nesciunt! Fugiat inventore
-                                quae
-                                sunt laborum, reiciendis ipsa repudiandae minus impedit tenetur laudantium corrupti accusamus unde porro
-                                quo
-                                dolorem.
+                                ${response.data[i].review_text}
                             </p>
                         </div>
                     `;
