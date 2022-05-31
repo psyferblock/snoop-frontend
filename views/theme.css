@@ -39,6 +39,8 @@ input[type=file]::file-selector-button:hover {
     --dark: black;
     --accent-1: #b81212;
     --accent-2: rgb(90, 170, 53);
+    added --accent-3
+    --accent-3: rgb(135, 165, 97);
     --modal-wrapper: rgba(0, 0, 0, 0.75);
     --modal: rgba(222, 222, 222, 0.65)
 }
@@ -49,7 +51,7 @@ body {
 }
 
 * {
-    margin: 0;
+    margin: 0s;
     padding: 0;
     font-weight: 400;
     letter-spacing: 0.08em;
@@ -95,6 +97,13 @@ button:hover {
 .action {
     color: var(--bright);
     background-color: var(--accent-2);
+    box-shadow: 0px 20px 40px -15px #0008;
+
+}
+.action2{
+    color: var(--bright);
+    background-color: var(--accent-3);
+    box-shadow: 0px 20px 40px -15px #0008;
 }
 
 .action:hover {
@@ -142,14 +151,20 @@ textarea {
 }
 
 .top-nav {
-    z-index: 999;
+    z-index: 1;
     position: sticky;
     top: 0;
     background: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.5) 0%,
             rgba(0, 0, 0, 0.5) 100%);
     height: 120px;
+    /* Tarek changing  bottom radius and shade */
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    box-shadow: 0px 20px 40px -15px #0008;
+    
 }
+
 
 @media only screen and (max-width: 600px) {
     .top-nav {
@@ -166,6 +181,11 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* tarek changes */
+    box-shadow: 0px 20px 40px -15px #0008;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+
 }
 
 .brand {
