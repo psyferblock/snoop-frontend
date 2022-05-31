@@ -82,7 +82,7 @@
             </ul>
         </div>
         <div class=" none menu">
-            <div class="x">X</div>
+            <div class="x" id="x-menu">X</div>
             <ul>
                 <a href="#">
                     <li class="" id="user-profile">
@@ -99,14 +99,48 @@
     <div class="myGallery">
     </div>
     <!-- End restaurants list -->
-    <script src="./rating_generators.js"></script>
+    <div class="none modal-wrapper" id="profile-modal">
+        <div class="modal">
+            <form id="edit-profile-form" class="" name="edit-profile-form" novalidate>
+                <input type="text" id="full_name" placeholder="Enter your new name" required>
+                <input type="email" id="email" placeholder="Enter your email" disabled>
+                <!-- dob -->
+                <label for="dob">Birthday:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" disabled>
+                <!-- password -->
+                <label for="password">Enter your password for security:</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+                <button id="update-submit" class="action" type="button"> Update</button>
+                <button id="cancel-edit" type="button"> Cancel</button>
+            </form>
+        </div>
+    </div>
+    <script src="./shared_functions.js"></script>
     <script>
-        let user_id = sessionStorage.getItem('user_id');
-        let full_name = sessionStorage.getItem('user_full_name');
-        let email = sessionStorage.getItem('email');
-        let user_type = sessionStorage.getItem('user_is_admin');
-        let dob = sessionStorage.getItem('dob');
-        console.log(user_id, full_name, email, user_type, dob);
+        // navbar management
+        let user_profile = document.getElementById('user-profile');
+        let profile_modal = document.getElementById('profile-modal');
+        // let dashboard = document.getElementById('dashboard');
+
+
+        let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
+        let x_menu = document.getElementById('x-menu');
+        let menu = document.getElementsByClassName('menu')[0];
+        profile_mask.addEventListener('click', menuHandler);
+        x_menu.addEventListener('click', menuHandler);
+        // end navbar management
+
+        // logic: user edit profile form
+        let cancel_edit = document.getElementById('cancel-edit');
+        cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'))
+
+        let password = document.getElementById('password');
+        user_profile.addEventListener('click', showProfileHandler)
+
+        let update_submit = document.getElementById('update-submit')
+        update_submit.addEventListener('click', updateSubmitHandler)
+
+
         // populates DOM grid with restaurant cards
         let populateGrid = () => {
             if (!user_id) return;

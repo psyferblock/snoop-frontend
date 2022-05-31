@@ -160,16 +160,40 @@
             font-size: 18px;
         }
 
-
         @media only screen and (max-width: 600px) {
             #insert-review {
                 padding: 10px;
             }
         }
+
+        /* styling the stars range input */
+        .rating-input {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            text-align: left;
+        }
+
+        .rating-input label {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAyVBMVEXGxsb+/v6zs7O8vLy7u7u6urrCwsL////AwMC5ubm/v7+9vb3Dw8O+vr7ExMS3t7fBwcG4uLi1tbW0tLTFxcW2traysrLg4ODt7e37+/vY2Njn5+fU1NT9/f35+fnr6+v19fXk5OTKysrHx8fi4uLa2trc3Nz39/fv7+/R0dHu7u7Ly8ve3t7Pz8/p6enl5eXT09PNzc38/Pzy8vLJycnZ2dnV1dXj4+Pq6urd3d3b29v09PTm5ubQ0NDIyMjX19fW1tbx8fH///9F+zTWAAAAQ3RSTlP///////////////////////////////////////////////////////////////////////////////////////8AQWIE7wAAAa5JREFUeNqV09dygzAQQNEVanQMGNy7nd57L/r/j0owtpMgiYj7xgyHWRVAqEMToU4HZocNwbHTDPAs6jYCg9i7awROAx83AnEbsusGYBIB4H4DcOEBMLsBICEAJGNjcJDBd2TPGLzjArRCYxD4UGSNDME0gXW0YwhWuAT2whAwBmUpMgK9HDY5MwVAUntkC+w5koLzyKpEfNiGrWp9EGNG2mAWdibFGvgwb4FBIV2MhIDN7wL/5lq3P7vU8/8dC9Pun239yO36cd5Q5RzOYlw3zpN8cFchDXXjkCPlSfct5Vg+nSPN1XhwFGMF6aP+Lo3Alb6PD+ouXzeS5l+JOjCUTpCxWoB9qJb3asB1BlLkpAb0sQxaUANsBnIW0oL9ZLdUau02mC61YPdzesnyCG8f7BstCFubdbpTIdCcllvWTrkGXFnlKp3D8o2TNIAi51wDOnQ9TjYTmz699VjupQYs7GIce1/s4peUAbQjrgQoLca54OJ3nWKs+EwJ7h3wohdR6TkgELwqwbFL2FhI8VPKHBXgST7kQtUyiboKMIgHQtPUHSpApye08ZUEjPsCKj+LDQz5xjYAAAAASUVORK5CYII=) no-repeat 0 0;
+            background-size: 24px 24px;
+            font-size: 0;
+            cursor: pointer;
+        }
+
+        .rating-input input {
+            display: none;
+        }
+
+        .rating-input input:checked+label,
+        .rating-input input:checked~input+label {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABgFBMVEXRXzXs0sT//v779fLu2MzSYTT0akL58e326ePqYkLy4tnmxbPqzb3dYTq6XizYpIntZELhYj37bkPcrpW6XCvCXS3esZrNYTHbZjf1bUDoybjJgVvLhmHZYDnKXjLmaDvNXjPGXi/GeVD9+vjBbUHlwa7Pjmv37Ofw3dPqZUDhZTvaqY7MiWXlZT7CcUb+/v3VnX+8YzPeZDnYYza9ZTbftJ7OXjTQkG/XYTfhuqTsaj7UYjTXoYS/aTvUYDe7YTHwaz/kYz7XYjfXYzXWXzj2a0P0aUP8+Pb2akPxZ0O9XCvzaEPyaEPvZUPyZ0PvZkPuZULsY0LwZkPwZ0P4bEP3a0P5bUP6bUP5bEP8b0Pjvan05d2+ZznAaj39cEPIfVXHfFTRlHTt1cjbq5LEdErFd079+/r15+Drz8HgtqDvaUDy39bqZj/lZzzwaUDHXTDYZDXtZ0DfZzj47+nIf1jJYC/yaULuZ0HTmHnUmXrw28+7Xy7VYTb4bkH5bkP///8s9V56AAAAgHRSTlP/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ADgFS2cAAAIJSURBVHjaldX5V9owAMDxGmBQrtoRUDkqyI2MgUKZ4jyQ6e6NjW2WS0R0p5vTuUPY8q+7duWN1ya1/f7UNPn8kCbvlUL4on2EjwQceYOg3DEGQOHi0hBwzpwxhsCv+bmcEQDav7sRuwHQv+h2Zz0GwNqZIGwuGACxOUEQvDbdIBW5+bfTkm6wOCuC1YBuMNgUwR9o1Qla3jdSlaZO4Dt9LTWf1Ql6q3tSjWFUF0jCxr/2ZhwYsKuqtN2QO0moZyl/8aGiyodX47aVc/CQQrZe5cY9fS13+uIeAANP9Cz/XAla5U0728v3ry3j9vz/Sslvlu/XrK/GzJOfFSzCzI5GXy1Zk+Ic3t2tktcvuX3qgzsPWH48wjeKXeJOGhzCzGNMn6iEiXA1pjqjp6pcw/fku2QNLj1QlM6ltC6fOaIEIx/SAkz1paJb+5ogl36hDCY1gN37TBW1ogE8609UsUENsLD1XJ3bRAQ277QcG4ah8XM4TgQlSl5zpxBP5cYDV4IIAuy0FHXUQiha5rekUXrjmADOYV2M5fJAGq8MQ9ILzk8ATV6crhUdSO7jgBLfhA4IIOuq12m+93bib30QZus0XQRYEHXTtItbA2iy5kaNpr9MYYGDo9eLfqTIPuDpWh4LyiF+34ZUHf/k2A4OgAJkAMIVL0TMGOBsOxGh1hGDAc0kInbbpwAGugICsJ4iKYYBmgAAAABJRU5ErkJggg==);
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>SNOOP</title>
-
 </head>
 
 <body>
@@ -206,33 +230,21 @@
     <div class="none modal-wrapper" id="profile-modal">
         <div class="modal">
             <form id="edit-profile-form" class="" name="edit-profile-form" novalidate>
-                <input type="text" id="full_name" value="full_name" placeholder="Enter your new name" required>
+                <input type="text" id="full_name" placeholder="Enter your new name" required>
                 <input type="email" id="email" placeholder="Enter your email" disabled>
                 <!-- dob -->
                 <label for="dob">Birthday:</label>
-                <input type="date" id="date_of_birth" name="date_of_birth" value="2022-05-25" disabled>
+                <input type="date" id="date_of_birth" name="date_of_birth" disabled>
                 <!-- password -->
                 <label for="password">Enter your password for security:</label>
-                <input type="password" id="password" name="password" minlength="8" value="helloworld" required>
+                <input type="password" id="password" name="password" minlength="8" required>
                 <button id="update-submit" class="action" type="button"> Update</button>
                 <button id="cancel-edit" type="button"> Cancel</button>
             </form>
         </div>
     </div>
-    <script src="./rating_generators.js"></script>
+    <script src="./shared_functions.js"></script>
     <script>
-        // remove dashboard button for non admin users
-        if (!sessionStorage.getItem('user-is_admin')) {
-            document.getElementById('dashboard').outerHTML = ""
-        }
-
-        // user data
-        let user_id = sessionStorage.getItem('user_id');
-        let user_full_name = sessionStorage.getItem('user_full_name');
-        let email = sessionStorage.getItem('email');
-        let dob = sessionStorage.getItem('dob');
-
-
         // get relevant url params
         const urlParams = new URLSearchParams(window.location.search);
         const restaurant_id = urlParams.get('restaurantid');
@@ -240,18 +252,12 @@
         // navbar management
         let user_profile = document.getElementById('user-profile');
         let profile_modal = document.getElementById('profile-modal');
-        let dashboard = document.getElementById('dashboard');
+        // let dashboard = document.getElementById('dashboard');
+
 
         let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
         let x_menu = document.getElementById('x-menu');
         let menu = document.getElementsByClassName('menu')[0];
-
-        let menuHandler = () => {
-            menu.classList.toggle('none');
-            profile_mask.classList.toggle('none');
-
-        }
-
         profile_mask.addEventListener('click', menuHandler);
         x_menu.addEventListener('click', menuHandler);
         // end navbar management
@@ -259,52 +265,12 @@
         // logic: user edit profile form
         let cancel_edit = document.getElementById('cancel-edit');
         cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'))
+
         let password = document.getElementById('password');
-        let showProfileHandler = () => {
-            menuHandler();
-            //   getting data from locat storage, which was set on sign in or sign up
-            document.getElementById('full_name').value = user_full_name;
-            document.getElementById('email').value = email;
-            document.getElementById('date_of_birth').value = dob.slice(0, 10);
-            profile_modal.classList.toggle('none');
-        }
         user_profile.addEventListener('click', showProfileHandler)
 
         let update_submit = document.getElementById('update-submit')
-        let updateSubmitHandler = (e) => {
-            // TODO get data from form
-            e.preventDefault();
-            let data = new FormData();
-            data.append('email', sessionStorage.getItem('email'));
-            data.append('full_name', document.getElementById('full_name').value);
-            data.append('password', document.getElementById('password').value);
-
-            //    TODO api that takes user id and password, and updates name if they were valid
-            axios({
-                method: 'post',
-                url: 'http://localhost/snoop/Snoop-backend/updateuser.php',
-                data: data,
-            }).then(function (response) {
-                console.log(response);
-                sessionStorage.setItem('user_id', response.data.user_id);
-                sessionStorage.setItem('user_full_name', response.data.full_name);
-                sessionStorage.setItem('email', response.data.email);
-                sessionStorage.setItem('dob', response.data.date_of_birth);
-                sessionStorage.setItem('user_is_admin', response.data.user_type);
-                // if sign in success, redirect to home
-                if (response.data.user_id) {
-                    // setTimeout(() => document.location = "./views/home.html", 500)
-                } else {
-                    // setTimeout(() => document.location = "../index.html", 500)
-                }
-            }).catch(function (error) {
-                console.log(error);
-            });
-            // TODO set local storage according to reply
-            profile_modal.classList.toggle('none');
-        }
         update_submit.addEventListener('click', updateSubmitHandler)
-
         // populate DOM section
         let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];
         let user_reviews = document.getElementById('user-reviews');
@@ -342,14 +308,13 @@
                         </div>
                         <div id="part-two">
                             <div class="rating" id="review-rating">
-                                <span> 
-                                    // TODO input element for stars
-                                    <span class="fa fa-2x fa-star checked"></span>
-                                    <span class="fa fa-2x fa-star checked"></span>
-                                    <span class="fa fa-2x fa-star checked"></span>
-                                    <span class="fa fa-2x fa-star"></span>
-                                    <span class="fa fa-2x fa-star"></span>
-                                </span>
+                                <div class="rating-input">
+                                    <input type="radio" name="any_name" value="5" id="sel-rating-5"><label for="sel-rating-5">5</label>
+                                    <input type="radio" name="any_name" value="4" id="sel-rating-4" checked><label for="sel-rating-4">4</label>
+                                    <input type="radio" name="any_name" value="3" id="sel-rating-3"><label for="sel-rating-3">3</label>
+                                    <input type="radio" name="any_name" value="2" id="sel-rating-2"><label for="sel-rating-2">2</label>
+                                    <input type="radio" name="any_name" value="1" id="sel-rating-1"><label for="sel-rating-1">1</label>
+                                </div>
                             </div>
                             <button id="submit-review" class="action" type="button" onclick="submitReview(this)">Submit</button>
                         </div> 
@@ -362,7 +327,7 @@
                         <div class="review">
                             <div class="profile-rating">
                                 <div class="profile-img-mask">
-                                    <img class="profile-img" src="./assets/profile.png" alt="">
+                                    <img class="profile-img" src="./assets/profile.png" alt="profile-image">
                                 </div>
                                 <div class="rating">
                                     ${generateReviewRating(response.data[i].rating_score)}
@@ -383,15 +348,13 @@
         }
         // TODO finish the submit review method
         let submitReview = () => {
+            let score;
+            document.querySelectorAll('input[type="radio"]').forEach(i => { if (i.checked) { score = i.value } })
             let data = new FormData();
             data.append('user_id', user_id);
             data.append('restaurant_id', restaurant_id);
             data.append('review_text', document.getElementById('review-text-input').value);
-            // data.append('rating_score', document.getElementById('review-rating').value);
-            // TODO find an input which makes stars into value
-            // TODO get input 
-            data.append('rating_score', 5);
-            console.log(data);
+            data.append('rating_score', score);
             axios({
                 method: 'post',
                 url: 'http://localhost/snoop/Snoop-backend/addreview.php',
