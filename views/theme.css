@@ -39,7 +39,7 @@ input[type=file]::file-selector-button:hover {
     --dark: black;
     --accent-1: #b81212;
     --accent-2: rgb(90, 170, 53);
-    added --accent-3
+    /* Tarek  added --accent-3  */
     --accent-3: rgb(135, 165, 97);
     --modal-wrapper: rgba(0, 0, 0, 0.75);
     --modal: rgba(222, 222, 222, 0.65)
@@ -106,7 +106,13 @@ button:hover {
     box-shadow: 0px 20px 40px -15px #0008;
 }
 
+
 .action:hover {
+    background-color: #c0fc84 !important;
+    cursor: pointer;
+}
+/* Tarek action2 hover added  */
+.action2:hover {
     background-color: #c0fc84 !important;
     cursor: pointer;
 }
@@ -185,6 +191,9 @@ textarea {
     box-shadow: 0px 20px 40px -15px #0008;
     border-bottom-right-radius: 5%;
     border-bottom-left-radius: 5%;
+    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
+            display: block;
+            
 
 }
 
