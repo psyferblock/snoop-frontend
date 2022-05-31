@@ -60,6 +60,7 @@ body {
 
 /* utility classes */
 .rating {
+
     display: flex;
 }
 
@@ -309,6 +310,63 @@ textarea {
 
 }
 
+/* message styling */
+.message-wrapper {
+    z-index: 2199;
+    width: 120vw;
+    height: 120vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--modal-wrapper)
+}
+
+.message {
+    z-index: 2999;
+    margin: auto;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 200px;
+    background-color: var(--bright);
+    display: flex;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .message {
+        border-radius: 15px;
+        position: fixed;
+        top: 50%;
+        width: 250px;
+        height: 200px;
+        background-color: var(--bright);
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+.message * {
+    font-size: 28px;
+    margin: auto;
+}
+
+.good {
+    border: 2px solid var(--mid);
+    outline: 5px solid var(--accent-2);
+    outline-offset: 8px;
+}
+
+.bad {
+    border: 2px solid var(--mid);
+    outline: 5px solid var(--accent-1);
+    outline-offset: 8px;
+}
+
 
 /* modal styling */
 .modal-wrapper {
@@ -393,12 +451,7 @@ form button {
 
 
 
-/* establish styling for grid of images */
-/* TODO */
-
-/*
-  The grid itself needs only 4 CSS declarations:
-*/
+/* styling for grid of images */
 
 .myGallery * {
     /* z-index: -99; */

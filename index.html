@@ -144,8 +144,7 @@
 
     <div class="modal-wrapper none">
         <div class="modal">
-            <!-- sign up form -->
-            <!-- TODO fix values and make input required -->
+            <!-- user sign up form -->
             <form id="sign-up-form" class="none" name="sign-up-form" novalidate>
                 <input type="text" id="full_name" placeholder="Enter your full name" required>
                 <input type="email" id="email" placeholder="Enter your email" required>
@@ -167,7 +166,7 @@
                 <button id="signup-submit" class="action" type="button"> Sign Up</button>
                 <button id="cancel-signup"> Cancel</button>
             </form>
-            <!-- TODO fix values and make input required, style sign_in pasword and email same as without prefix-->
+            <!-- user sign in form-->
             <form id="sign-in-form" class="none" name="sign-in-form" novalidate>
                 <input type="email" id="signin_email" placeholder="Enter your email" required>
                 <!-- password -->
@@ -178,6 +177,7 @@
             </form>
         </div>
     </div>
+    <script src="./views/shared_functions.js"></script>
     <script>
         let modal_wrapper = document.getElementsByClassName('modal-wrapper')[0];
         let cancel_signin = document.getElementById('cancel-signin');
@@ -206,7 +206,6 @@
             modal_wrapper.classList.remove('none');
         })
 
-
         let signup_submit = document.getElementById("signup-submit");
         let signupSubmitHandler = (e) => {
             e.preventDefault();
@@ -228,11 +227,14 @@
                 sessionStorage.setItem('user_is_admin', response.data.user_type);
                 // if sign up success, redirect to home
                 if (response.data.user_id) {
+                    displayMessage('Success!', 0);
                     setTimeout(() => document.location = "./views/home.html", 500)
                 } else {
+                    displayMessage('Response Invalid!', 1);
                     setTimeout(() => document.location = "./index.html", 500)
                 }
             }).catch(function (error) {
+                displayMessage('Request Failed!', 1);
                 console.log(error);
                 setTimeout(() => document.location = "./index.html", 500)
             });
@@ -259,11 +261,14 @@
                 sessionStorage.setItem('user_is_admin', response.data.user_type);
                 // if sign in success, redirect to home
                 if (response.data.user_id) {
+                    displayMessage('Success!', 0);
                     setTimeout(() => document.location = "./views/home.html", 500)
                 } else {
-                    setTimeout(() => document.location = "./index.html", 500)
+                    displayMessage('Response Invalid', 1);
+                    console.log(response);
                 }
             }).catch(function (error) {
+                displayMessage('Request Failed!', 1);
                 console.log(error);
                 setTimeout(() => document.location = "./index.html", 500)
             });

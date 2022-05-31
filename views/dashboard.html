@@ -155,7 +155,6 @@
         }
 
         .accept-decline {
-            /* order: -1; */
             display: flex;
             justify-content: flex-end;
         }
@@ -180,7 +179,6 @@
         .resto-form-wrapper {
             display: flex;
             flex-direction: column;
-            /* max-height: 100%; */
             max-width: 100%;
             padding: 40px;
             margin: 0;
@@ -219,7 +217,6 @@
         }
 
         .profile-rating {
-            /* order: -2; */
             display: flex;
             vertical-align: middle;
             align-items: center;
@@ -344,32 +341,9 @@
     </div>
     <script src="./shared_functions.js"></script>
     <script>
-
-        // TODO fix this function
-        // file to Base64 function
-        function getBase64(file) {
-            let reader = new FileReader();
-            reader.addEventListener('loadend', function () {
-                console.log(this.result)
-            });
-            reader.readAsText(file);
-
-            // reader.readAsDataURL(file);
-            // reader.onloadend = function () {
-            //     console.log('base64 read');
-            //     console.log(reader.result);
-            // };
-            // reader.onerror = function (error) {
-            //     console.log('Error: ', error);
-            // };
-        }
-
         // navbar management
         let user_profile = document.getElementById('user-profile');
         let profile_modal = document.getElementById('profile-modal');
-        // let dashboard = document.getElementById('dashboard');
-
-
         let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
         let x_menu = document.getElementById('x-menu');
         let menu = document.getElementsByClassName('menu')[0];
@@ -380,13 +354,12 @@
         // logic: user edit profile form
         let cancel_edit = document.getElementById('cancel-edit');
         cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'))
-
         let password = document.getElementById('password');
         user_profile.addEventListener('click', showProfileHandler)
-
         let update_submit = document.getElementById('update-submit')
         update_submit.addEventListener('click', updateSubmitHandler)
 
+        // populating main element in DOM, based on which tab is active
         let main = document.getElementById('main');
         let reviews_tab = document.getElementById('reviews-tab');
         let users_tab = document.getElementById('users-tab');
@@ -409,7 +382,7 @@
                 data: data
             }).then(function (response) {
                 console.log(response.data);
-                // TODO for loop appending elements to reviews
+                // iterating over response and appending elements to reviews
                 for (let i = 0; i < response.data.length; i++) {
                     let review = `
                     <div class="review">
@@ -454,9 +427,11 @@
                 url: "http://localhost/snoop/Snoop-backend/activatereview.php",
                 data: data,
             }).then(function (response) {
+                displayMessage('Done!', 0);
                 console.log(response.data);
                 button.parentNode.parentNode.parentNode.removeChild(button.parentNode.parentNode);
             }).catch(function (error) {
+                displayMessage('Failed!', 1);
                 console.log(error);
             });
         }
@@ -501,7 +476,7 @@
             });
         }
 
-        // TODO finish this function
+        // this function toggles user_type between 0 and 1,  admin vs not admin
         let upgradeUser = (user_div) => {
             let data = new FormData();
             let target_id = user_div.dataset.idUser;
@@ -512,9 +487,11 @@
                 url: 'http://localhost/snoop/Snoop-backend/upgradeuser.php',
                 data: data,
             }).then(function (response) {
+                displayMessage('User Toggled!', 0);
                 user_div.classList.toggle('isadmin');
                 console.log(response);
             }).catch(function (error) {
+                displayMessage('Toggle Failed', 1);
                 console.log(error);
             });
         }
@@ -546,23 +523,33 @@
                 </form>
             `;
             main.insertBefore(resto_form, main[0]);
+
+            //sets an async reader on the file input and prepares it in the session storage
+            document.getElementById('cover-input').addEventListener("change", function () {
+                const reader = new FileReader();
+                reader.addEventListener("load", () => {
+                    const uploaded_image = reader.result;
+                    console.log(uploaded_image);
+                    sessionStorage.setItem('cover_image', uploaded_image)
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
         }
 
         // function that calls api addrestaurant.php
         let submitResto = () => {
-            // getBase64(resto_cover);
             let data = new FormData();
             data.append('restaurant_name', document.getElementById('resto-name').value);
             data.append('address', document.getElementById('resto-address').value);
             data.append('description', document.getElementById('resto-description').value);
-            // TODO figure converting image to BASE64
-            data.append('cover_image', "https://picsum.photos/700");
+            if (sessionStorage.getItem('cover_image')) { data.append('cover_image', sessionStorage.getItem('cover_image')); }
             axios({
                 method: 'post',
                 url: 'http://localhost/snoop/Snoop-backend/addrestaurant.php',
                 data: data,
             }).then(function (response) {
                 if (response.data.success) {
+                    displayMessage('Restaurant Added', 0);
                     document.getElementById('resto-name').value = '';
                     document.getElementById('resto-address').value = '';
                     document.getElementById('resto-description').value = '';
@@ -570,6 +557,7 @@
                 }
                 console.log(response);
             }).catch(function (error) {
+                displayMessage('Failed', 1);
                 console.log(error);
             });
         }
@@ -581,7 +569,7 @@
         users_tab.addEventListener('click', usersHandler);
         add_resto_tab.addEventListener('click', addTabHandler);
 
-        // defaulttab onload
+        // default tab onload
         window.onload = reviewsHandler;
     </script>
 </body>

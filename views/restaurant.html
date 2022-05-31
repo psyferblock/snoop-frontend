@@ -23,9 +23,9 @@
             width: 100%;
             position: absolute;
             background: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.0) 30%,
-                    rgba(0, 0, 0, 0.5) 70%,
-                    rgba(0, 0, 0, 0.9) 100%);
+                    rgba(0, 0, 0, 0.0)30%,
+                    rgba(0, 0, 0, 0.6) 70%,
+                    rgba(0, 0, 0, 1) 100%);
         }
 
         .cover {
@@ -49,14 +49,15 @@
         }
 
         .text h4 {
-            font-size: 1.5em;
+            margin-top: 10px;
+            font-size: 1.3em;
             font-weight: 400;
             text-align: justify;
             text-justify: inter-word;
         }
 
         .name {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -79,7 +80,11 @@
             }
         }
 
-        /* user-reviews section */
+        .rating {
+            margin-top: 10px;
+        }
+
+        /* user-reviews styling section */
         label {
             margin: 20px 0px;
             font-size: 20px;
@@ -167,7 +172,7 @@
         }
 
         /* TODO research how this works */
-        /* styling the stars range input, I have no idea how this works*/
+        /* styling the stars range input, I have no idea how this works, but it does*/
         .rating-input {
             unicode-bidi: bidi-override;
             direction: rtl;
@@ -253,9 +258,6 @@
         // navbar management
         let user_profile = document.getElementById('user-profile');
         let profile_modal = document.getElementById('profile-modal');
-        // let dashboard = document.getElementById('dashboard');
-
-
         let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
         let x_menu = document.getElementById('x-menu');
         let menu = document.getElementsByClassName('menu')[0];
@@ -265,13 +267,12 @@
 
         // logic: user edit profile form
         let cancel_edit = document.getElementById('cancel-edit');
-        cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'))
-
+        cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'));
         let password = document.getElementById('password');
-        user_profile.addEventListener('click', showProfileHandler)
+        user_profile.addEventListener('click', showProfileHandler);
+        let update_submit = document.getElementById('update-submit');
+        update_submit.addEventListener('click', updateSubmitHandler);
 
-        let update_submit = document.getElementById('update-submit')
-        update_submit.addEventListener('click', updateSubmitHandler)
         // populate DOM section
         let hero_wrapper = document.getElementsByClassName('hero-wrapper')[0];
         let user_reviews = document.getElementById('user-reviews');
@@ -282,16 +283,13 @@
                 url: `http://localhost/snoop/Snoop-backend/getrestaurant.php?id=${restaurant_id}`,
             }).then(function (response) {
                 let resto = response.data[0];
-                console.log(resto);
-                console.log(response);
-                // TODO populate the DOM
                 hero_wrapper.innerHTML = `
                         <div class="gradient">
                             </div>
                         <div class="text">
                             <span>
                                 <h1 class="name">${resto.rest_name}</h1>
-                                <div class="rating">
+                                <h4>${resto.address} </h4><div class="rating">
                                     <span>
                                         ${generateMainRating(resto.avg)}
                                     </span>
@@ -322,7 +320,7 @@
                     </form>            
                 `;
                 let reviews = "";
-                // TODO for loop to populate all reviews
+                // iterates over reviews in response to populate user reviews DOM section
                 for (i = 1; i < response.data.length; i++) {
                     let review = `
                         <div class="review">
@@ -347,10 +345,13 @@
             });
 
         }
-        // TODO finish the submit review method
+        // submit review and a rating score ranging between 1 and 5
         let submitReview = () => {
+
+            // get rating score 
             let score;
             document.querySelectorAll('input[type="radio"]').forEach(i => { if (i.checked) { score = i.value } })
+
             let data = new FormData();
             data.append('user_id', user_id);
             data.append('restaurant_id', restaurant_id);
@@ -362,14 +363,14 @@
                 data: data,
             }).then(function (response) {
                 if (response.data.success) {
-                    // TODO display a success message
+                    displayMessage('Review Successful!', 0);
                     document.getElementById('review-text-input').value = ''
                 }
                 console.log(response);
             }).catch(function (error) {
+                displayMessage('Submit Failed!', 0);
                 console.log(error);
             });
-
         }
         window.onload = populateRestaurant;
     </script>

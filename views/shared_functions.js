@@ -73,7 +73,7 @@ let showProfileHandler = () => {
 
 // handler of user updating profile
 let updateSubmitHandler = (e) => {
-    // TODO get data from form
+    // get data from form
     e.preventDefault();
     let data = new FormData();
     data.append('email', sessionStorage.getItem('email'));
@@ -102,4 +102,24 @@ let updateSubmitHandler = (e) => {
         console.log(error);
     });
     profile_modal.classList.toggle('none');
+}
+
+let displayMessage = (message, theme) => {
+    let className;
+    if (theme == 0) { className = 'good' } else { className = 'bad' }
+    let messag_div = document.createElement("div");
+    messag_div.id = 'message_key'
+    messag_div.classList.add('message-wrapper')
+    messag_div.innerHTML = `
+    <div class="message ${className}">
+        <span>
+            ${message}
+        </span>
+    </div>
+    `;
+    let body = document.getElementsByTagName("BODY")[0]
+    body.appendChild(messag_div);
+    setTimeout(() => {
+        document.getElementById('message_key').parentNode.removeChild(document.getElementById('message_key'));
+    }, 1000)
 }

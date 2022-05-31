@@ -119,9 +119,6 @@
         // navbar management
         let user_profile = document.getElementById('user-profile');
         let profile_modal = document.getElementById('profile-modal');
-        // let dashboard = document.getElementById('dashboard');
-
-
         let profile_mask = document.getElementsByClassName('profile-img-mask')[0];
         let x_menu = document.getElementById('x-menu');
         let menu = document.getElementsByClassName('menu')[0];
@@ -131,13 +128,11 @@
 
         // logic: user edit profile form
         let cancel_edit = document.getElementById('cancel-edit');
-        cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'))
-
+        cancel_edit.addEventListener('click', () => profile_modal.classList.toggle('none'));
         let password = document.getElementById('password');
-        user_profile.addEventListener('click', showProfileHandler)
-
-        let update_submit = document.getElementById('update-submit')
-        update_submit.addEventListener('click', updateSubmitHandler)
+        user_profile.addEventListener('click', showProfileHandler);
+        let update_submit = document.getElementById('update-submit');
+        update_submit.addEventListener('click', updateSubmitHandler);
 
 
         // populates DOM grid with restaurant cards
@@ -169,7 +164,7 @@
                                         </div>
                                     </span>
                                 </div>
-                                <img src=${resto.cover_image_uri} /> //TODO
+                                <img src=${resto.cover_image_uri} />
                             </a>
                         </div>  
                         `;
@@ -181,7 +176,6 @@
                 // setTimeout(() => document.location = ".../index.html", 3000)
             });
         }
-
         window.onload = populateGrid;
     </script>
 </body>
