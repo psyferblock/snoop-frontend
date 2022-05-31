@@ -94,7 +94,7 @@ let updateSubmitHandler = (e) => {
         sessionStorage.setItem('user_is_admin', response.data.user_type);
         // if sign in success, redirect to home
         if (response.data.user_id) {
-            setTimeout(() => document.location = "./home.html", 500)
+            console.log('success')
         } else {
             console.log('response has no response.data.user_id ');
         }
