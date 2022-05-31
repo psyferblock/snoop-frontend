@@ -191,9 +191,6 @@ textarea {
     box-shadow: 0px 20px 40px -15px #0008;
     border-bottom-right-radius: 5%;
     border-bottom-left-radius: 5%;
-    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(147,147,147,1) 50%,rgba(0,0,0,0) 100%);
-            display: block;
-            
 
 }
 
